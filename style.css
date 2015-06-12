@@ -240,8 +240,8 @@ Version:        0.1.0
 .footer h3.widget-title {
   color: white;
 }
-.fs{
-   width: calc( <?php echo $footer_width; ?>% - <?php echo $padding_width;?>px );
+.fs {
+  margin: 2px;
 }
 
 .linearBg2 {

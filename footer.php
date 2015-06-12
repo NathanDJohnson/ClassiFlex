@@ -12,39 +12,54 @@ $active_footers = 0;
 ?>
 <div class="footer linearBg2">
 	<div id="footer-sidebar" class="secondary">
+	<?php
+		if(is_active_sidebar('footer-sidebar-1')){
+	?>
 		<div id="footer-sidebar1" class="fs">
 		<?php
-			if(is_active_sidebar('footer-sidebar-1')){
 				$active_footers = $active_footers + 1;
 				dynamic_sidebar('footer-sidebar-1');
-			}
 		?>
-		</div>
+		</div><!-- #footer-sidebar1 -->
+	<?php
+		}
+	?>
+	<?php
+		if(is_active_sidebar('footer-sidebar-2')){
+	?>
 		<div id="footer-sidebar2" class="fs">
 		<?php
-			if(is_active_sidebar('footer-sidebar-2')){
 				$active_footers = $active_footers + 1;
 				dynamic_sidebar('footer-sidebar-2');
-			}
 		?>
-		</div>
+		</div><!-- #footer-sidebar2 -->
+	<?php
+		}
+	?>
+	<?php
+		if(is_active_sidebar('footer-sidebar-3')){
+	?>
 		<div id="footer-sidebar3" class="fs">
 		<?php
-			if(is_active_sidebar('footer-sidebar-3')){
 				$active_footers = $active_footers + 1;
 				dynamic_sidebar('footer-sidebar-3');
-			}
 		?>
-		</div>
-		<div id="footer-sidebar3" class="fs">
+		</div><!-- #footer-sidebar3 -->
+	<?php
+		}
+	?>
+	<?php
+		if(is_active_sidebar('footer-sidebar-4')){
+	?>
+		<div id="footer-sidebar4" class="fs">
 		<?php
-			if(is_active_sidebar('footer-sidebar-4')){
 				$active_footers = $active_footers + 1;
 				dynamic_sidebar('footer-sidebar-4');
-			}
 		?>
-		</div>
-	</div>
+		</div><!-- #footer-sidebar4 -->
+	<?php
+		}
+	?>
 	<div id="bottom-footer-sidebar" class="">
 	<?php
 		if(is_active_sidebar('sidebar_footer')){
