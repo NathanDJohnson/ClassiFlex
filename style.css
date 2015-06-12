@@ -8,16 +8,14 @@ Template:       classipress
 Version:        0.1.0
 */
 
-/**
- * This is done in functions.php now
- * @import url("../classipress/style.css");
- */
-
 .advanced-search-link {
   clear: both;
   float: right;
 }
 
+/**
+ * Styling menu buttons
+ */
 #suckerfishnav {
   text-align: center;
   margin: 0;
@@ -161,25 +159,39 @@ Version:        0.1.0
 	background-image:linear-gradient(top, #3EACBA, #48C6D4);
 }
 
-.footer{
-  /* width: calc( 100% - 2em );  needs fixing! */
+/**
+ * Style the footer
+ */
+.footer {
   margin-top: -2px;
   padding: 10px;
   height: auto;
   overflow: hidden;
   background-color: #bbb;
 }
+.footer, 
+.footer a, 
+.footer p {
+  color: #cdcdcd;
+  text-decoration: none;
+}
+.footer a:hover {
+	opacity: 0.8;
+}
+.footer h3.widget-title {
+  color: white;
+}
+
 #footer-sidebar {
   background-color:inherit;
 }
 .fs {
   position: relative;
   display: block;
-  width: calc(33% - 6px);
   float: left;
   background-color: inherit;
   padding: 0px;
-  margin: 4px;
+  margin: 2px;
 }
 .popup {
   padding-top: 20px;
@@ -230,36 +242,11 @@ Version:        0.1.0
   float: left;
 }
 
-.footer, .footer a, .footer p {
-  color: #cdcdcd;
-  text-decoration: none;
-}
-.footer a:hover {
-	opacity: 0.8;
-}
-.footer h3.widget-title {
-  color: white;
-}
-.fs {
-  margin: 2px;
-}
-
 .linearBg2 {
-  /* fallback */
   background-color: #0B7300;
-
-  /* Safari 4-5, Chrome 1-9 */
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#313131), to(#0B7300));
-
-  /* Safari 5.1, Chrome 10+ */
   background: -webkit-linear-gradient(top, #679325, #0B7300);
-
-  /* Firefox 3.6+ */
   background: -moz-linear-gradient(top, #679325, #0B7300);
-
-  /* IE 10 */
   background: -ms-linear-gradient(top, #679325, #0B7300);
-
-  /* Opera 11.10+ */
   background: -o-linear-gradient(top, #679325, #0B7300);
 }
