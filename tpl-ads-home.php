@@ -10,8 +10,8 @@
 <div class="content">
 	<div class="content_botbg">
 		<div class="content_res">
-			<?php if( function_exists( 'cs_flexslider_slider' ) ) {
-				cs_flexslider_slider();
+			<?php if( function_exists( 'cpflex_flexslider_slider' ) ) {
+				cpflex_flexslider_slider();
 			} else {
 				get_template_part( 'featured' ); 
 			} ?>
