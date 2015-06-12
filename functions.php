@@ -92,7 +92,8 @@ function cannabiz_enqueue_parent_style() {
 add_action( 'wp_enqueue_scripts', 'cannabiz_enqueue_parent_style' );
 
 function cannabiz_enqueue_child_style() {
-    wp_enqueue_style( 'child-style', get_stylesheet_uri() );
+	 wp_dequeue_style( 'at-main' );
+    wp_enqueue_style( 'child-style', get_stylesheet_uri(), array('parent-style','at-color') );
 }
 add_action( 'wp_enqueue_scripts', 'cannabiz_enqueue_child_style', 11 );
 
