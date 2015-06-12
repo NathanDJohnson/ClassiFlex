@@ -1,10 +1,4 @@
 <?php
-// BEFORE USING: Move the classiPress-child theme into the /themes/ folder.
-//
-// You can add you own actions, filters and code below.
-//
-// Remove below actions, "includes" folder and "tpl-featured-ads-home.php" file from your child theme if you don't wish to have that homepage.
-
 /**
  * Add post-thumbnails support
  */
