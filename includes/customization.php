@@ -196,17 +196,21 @@ function classiflex_customize_css() {
 		 #full-sidebar { background-color: <?php echo esc_html( $options[quaternary_color] ); ?>; }
 		<?php endif; ?>
 		
-		<?php if ( $options[secondary_color] && $options[quaternary_color]) { ?>
+		<?php if ( $options[secondary_color] && $options[secondary_accent]) { ?>
 			.linearBg2 {
-			  background-color: <?php echo esc_html( $options[quaternary_color] ); ?>;
-			  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo esc_html( $options[quaternary_color] ); ?>), to(<?php echo esc_html( $options[secondary_color] ); ?>));
-			  background: -webkit-linear-gradient(top, <?php echo esc_html( $options[quaternary_color] ); ?>, <?php echo esc_html( $options[secondary_color] ); ?>);
-			  background: -moz-linear-gradient(top, <?php echo esc_html( $options[quaternary_color] ); ?>, <?php echo esc_html( $options[secondary_color] ); ?>);
-			  background: -ms-linear-gradient(top, <?php echo esc_html( $options[quaternary_color] ); ?>, <?php echo esc_html( $options[secondary_color] ); ?>);
-			  background: -o-linear-gradient(top, <?php echo esc_html( $options[quaternary_color] ); ?>, <?php echo esc_html( $options[secondary_color] ); ?>);
+			  background-color: <?php echo esc_html( $options[secondary_color] ); ?>;
+			  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo esc_html( $options[secondary_color] ); ?>), to(<?php echo esc_html( $options[secondary_accent] ); ?>));
+			  background: -webkit-linear-gradient(top, <?php echo esc_html( $options[secondary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
+			  background: -moz-linear-gradient(top, <?php echo esc_html( $options[secondary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
+			  background: -ms-linear-gradient(top, <?php echo esc_html( $options[secondary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
+			  background: -o-linear-gradient(top, <?php echo esc_html( $options[secondary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
 			}
       <?php 
-      		}
+      		}else { ?>
+  			.linearBg2 {
+			  background-color: #eee;
+			}    			
+      <?php	}
          $style = ob_get_contents();
          ob_end_clean();
          
