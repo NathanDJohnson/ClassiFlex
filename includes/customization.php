@@ -211,7 +211,9 @@ function classiflex_customize_css() {
 
 	<?php /* Secondary color */ ?>
 		<?php if ( $options[secondary_color] ) : ?>
+			#main p.tag { color: <?php echo esc_html( $options[secondary_color] ); ?>;}
 			.header_menu { background-color: <?php echo esc_html( $options[secondary_color] ); ?>;}
+			.linearBg2 { border-top: 2px solid <?php echo esc_html( $options[secondary_color] ); ?>;}
 		<?php endif; ?>
 
 	<?php /* Tertiary color */ ?>
@@ -223,12 +225,17 @@ function classiflex_customize_css() {
 
 	<?php /* Quaternary color */ ?>
 		<?php if ( $options[quaternary_color] ) : ?>
-		 #main p { color: <?php echo esc_html( $options[quaternary_color] ); ?>; }
+		 p { color: <?php echo esc_html( $options[quaternary_color] ); ?>; }
+		<?php endif; ?>
+
+	<?php /* Tertiary accent */ ?>
+		<?php if ( $options[tertiary_accent] ) : ?>
+		 p.post-price { background-color: <?php echo esc_html( $options[tertiary_accent] ); ?>; }
 		<?php endif; ?>
 		
-	<?php /* Quinary color */ ?>
+	<?php /* Quinary accent */ ?>
 		<?php if ( $options[quinary_accent] ) : ?>
-		 .colour, span.colour, a, .header_top_res p a { color: <?php echo esc_html( $options[quinary_accent] ); ?>; }
+		 .colour, span.colour, a, .header_top_res p a, #main p { color: <?php echo esc_html( $options[quinary_accent] ); ?>; }
 		<?php endif; ?>
 		
 		<?php if ( $options[primary_color] && $options[secondary_accent]) { ?>
