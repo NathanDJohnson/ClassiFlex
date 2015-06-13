@@ -156,7 +156,38 @@ function classiflex_customize_register($wp_customize) {
 			'settings'   => 'classiflex_theme_options[quaternary_accent]',
 		) ) 
 	);
-
+// Quinary Color
+	$wp_customize->add_setting( 'classiflex_theme_options[quinary_accent]', array(
+    'default'        => '#0f0f0f',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+	) );
+	$wp_customize->add_control( 
+		new WP_Customize_Color_Control( 
+		$wp_customize, 
+		'quinary_accent', 
+		array(
+			'label'      => __( 'Quinary Accent', 'classiflex' ),
+			'section'    => 'classiflex_accent_scheme',
+			'settings'   => 'classiflex_theme_options[quinary_accent]',
+		) ) 
+	);
+// Septenary Color
+	$wp_customize->add_setting( 'classiflex_theme_options[septenary_accent]', array(
+    'default'        => '#0f0f0f',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+	) );
+	$wp_customize->add_control( 
+		new WP_Customize_Color_Control( 
+		$wp_customize, 
+		'septenary_accent', 
+		array(
+			'label'      => __( 'Septenary Accent', 'classiflex' ),
+			'section'    => 'classiflex_accent_scheme',
+			'settings'   => 'classiflex_theme_options[septenary_accent]',
+		) ) 
+	);
 
 }
 
@@ -175,7 +206,7 @@ function classiflex_customize_css() {
 	<?php /* Primary color sets site title, site description, and post title */ ?>
 		<?php if ( $options[primary_color] ) : ?>
 		 h1,h2,h3,h4,h5,h6,.header div#logo h1 a {color:<?php echo esc_html( $options[primary_color] ); ?>;}
-		 .header_menu { border-top: 1px solid <?php echo esc_html( $options[primary_color] ); ?>;}
+		 .header_menu { border-top: 2px solid <?php echo esc_html( $options[primary_color] ); ?>;}
 		<?php endif; ?>
 
 	<?php /* Secondary color sets masthead background */ ?>
