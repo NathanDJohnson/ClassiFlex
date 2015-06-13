@@ -205,7 +205,7 @@ function classiflex_customize_css() {
     
 	<?php /* Primary color sets site title, site description, and post title */ ?>
 		<?php if ( $options[primary_color] ) : ?>
-		 h1,h2,h3,h4,h5,h6,.header div#logo h1 a {color:<?php echo esc_html( $options[primary_color] ); ?>;}
+		 h1,h2,h3,h4,h5,h6,h3 a,.header div#logo h1 a {color:<?php echo esc_html( $options[primary_color] ); ?>;}
 		 .header_menu { border-top: 2px solid <?php echo esc_html( $options[primary_color] ); ?>;}
 		<?php endif; ?>
 
@@ -226,14 +226,14 @@ function classiflex_customize_css() {
 		 #main p { color: <?php echo esc_html( $options[quaternary_color] ); ?>; }
 		<?php endif; ?>
 		
-		<?php if ( $options[secondary_color] && $options[secondary_accent]) { ?>
+		<?php if ( $options[primary_color] && $options[secondary_accent]) { ?>
 			.linearBg2 {
-			  background-color: <?php echo esc_html( $options[secondary_color] ); ?>;
-			  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo esc_html( $options[secondary_color] ); ?>), to(<?php echo esc_html( $options[secondary_accent] ); ?>));
-			  background: -webkit-linear-gradient(top, <?php echo esc_html( $options[secondary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
-			  background: -moz-linear-gradient(top, <?php echo esc_html( $options[secondary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
-			  background: -ms-linear-gradient(top, <?php echo esc_html( $options[secondary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
-			  background: -o-linear-gradient(top, <?php echo esc_html( $options[secondary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
+			  background-color: <?php echo esc_html( $options[primary_color] ); ?>;
+			  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo esc_html( $options[primary_color] ); ?>), to(<?php echo esc_html( $options[secondary_accent] ); ?>));
+			  background: -webkit-linear-gradient(top, <?php echo esc_html( $options[primary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
+			  background: -moz-linear-gradient(top, <?php echo esc_html( $options[primary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
+			  background: -ms-linear-gradient(top, <?php echo esc_html( $options[primary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
+			  background: -o-linear-gradient(top, <?php echo esc_html( $options[primary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
 			}
       <?php 
       		}else { ?>
