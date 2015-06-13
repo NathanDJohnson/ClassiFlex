@@ -4,7 +4,7 @@ add_action( 'customize_register', 'classiflex_customize_register' );
 function classiflex_customize_register($wp_customize) {
 
 /* ------------
- * Color Scheme
+ * Primary Palette
  * ------------ */
    $wp_customize->add_section( 'classiflex_color_scheme', array(
     	'title'          => __( 'Primary Palette', 'classiflex' ),
@@ -79,6 +79,84 @@ function classiflex_customize_register($wp_customize) {
 			'settings'   => 'classiflex_theme_options[quaternary_color]',
 		) ) 
 	);
+
+/* ------------
+ * Accent Palette
+ * ------------ */
+   $wp_customize->add_section( 'classiflex_accent_scheme', array(
+    	'title'          => __( 'Accent Palette', 'classiflex' ),
+    	'description'    => __( 'Add a description of the default accent scheme.', 'classiflex' ),
+   	'priority'       => 36,
+	) );
+
+// Primary Accent
+	$wp_customize->add_setting( 'classiflex_theme_options[primary_accent]', array(
+    'default'        => '#ffffff',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+	) );
+	$wp_customize->add_control( 
+		new WP_Customize_Color_Control( 
+		$wp_customize, 
+		'primary_accent', 
+		array(
+			'label'      => __( 'Primary Accent', 'classiflex' ),
+			'section'    => 'classiflex_accent_scheme',
+			'settings'   => 'classiflex_theme_options[primary_accent]',
+		) ) 
+	);
+
+// Secondary Color
+	$wp_customize->add_setting( 'classiflex_theme_options[secondary_accent]', array(
+    'default'        => '#000000',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+	) );
+	$wp_customize->add_control( 
+		new WP_Customize_Color_Control( 
+		$wp_customize, 
+		'secondary_accent', 
+		array(
+			'label'      => __( 'Secondary Accent', 'classiflex' ),
+			'section'    => 'classiflex_accent_scheme',
+			'settings'   => 'classiflex_theme_options[secondary_accent]',
+		) ) 
+	);
+
+// Tertiary Color
+	$wp_customize->add_setting( 'classiflex_theme_options[tertiary_accent]', array(
+    'default'        => '#000000',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+	) );
+	$wp_customize->add_control( 
+		new WP_Customize_Color_Control( 
+		$wp_customize, 
+		'tertiary_accent', 
+		array(
+			'label'      => __( 'Tertiary Accent', 'classiflex' ),
+			'section'    => 'classiflex_accent_scheme',
+			'settings'   => 'classiflex_theme_options[tertiary_accent]',
+		) ) 
+	);
+
+// Quarternary Color
+	$wp_customize->add_setting( 'classiflex_theme_options[quaternary_accent]', array(
+    'default'        => '#0f0f0f',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+	) );
+	$wp_customize->add_control( 
+		new WP_Customize_Color_Control( 
+		$wp_customize, 
+		'quaternary_accent', 
+		array(
+			'label'      => __( 'Quaternary Accent', 'classiflex' ),
+			'section'    => 'classiflex_accent_scheme',
+			'settings'   => 'classiflex_theme_options[quaternary_accent]',
+		) ) 
+	);
+
 
 }
 
