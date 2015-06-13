@@ -117,3 +117,9 @@ function my_remove_feeds() {
 	remove_action( 'wp_head', 'feed_links', 2 );
 }
 add_action( 'after_setup_theme', 'my_remove_feeds' );
+
+function customize_register_init( $wp_customize ){
+    $wp_customize->remove_section('colors');
+}
+
+add_action( 'customize_register', 'customize_register_init' );
