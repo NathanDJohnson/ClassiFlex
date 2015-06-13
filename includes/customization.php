@@ -174,7 +174,7 @@ function classiflex_customize_css() {
     
 	<?php /* Primary color sets site title, site description, and post title */ ?>
 		<?php if ( $options[primary_color] ) : ?>
-		 h1,h2,h3,h4,h5,h6,#logo h1 a {color:<?php echo esc_html( $options[primary_color] ); ?>;}
+		 h1,h2,h3,h4,h5,h6,.header div#logo h1 a {color:<?php echo esc_html( $options[primary_color] ); ?>;}
 		 .header_menu { border-top: 1px solid <?php echo esc_html( $options[primary_color] ); ?>;}
 		<?php endif; ?>
 
