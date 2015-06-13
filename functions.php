@@ -1,4 +1,9 @@
 <?php
+
+// load customization
+require_once( get_stylesheet_directory() . '/includes/customization.php' );
+
+
 /**
  * Add post-thumbnails support
  */
