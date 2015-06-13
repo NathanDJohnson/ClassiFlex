@@ -13,8 +13,13 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+
+# Temporary files
 *.css~
 *.php~
+
+# Dynamically-produced files
+custom.css
 
 # Windows shortcuts
 *.lnk
