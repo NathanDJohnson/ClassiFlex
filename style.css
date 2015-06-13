@@ -8,22 +8,6 @@ Template:       classipress
 Version:        0.1.0
 */
 
-/**
- * Color scheme
- */
-.header_menu {
-  background-color: #3F8223;
-}
-
-a,
-h1.single,
-.header_top_res p a,
-#logo h1 a {
-  color: #3F8223 !important;
-}
-
-/**********/
-
 .advanced-search-link {
   clear: both;
   float: right;
