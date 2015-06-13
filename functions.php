@@ -112,33 +112,3 @@ function my_remove_feeds() {
 	remove_action( 'wp_head', 'feed_links', 2 );
 }
 add_action( 'after_setup_theme', 'my_remove_feeds' );
-
-// Minify HTML codes when page is output.
-add_action('wp_loaded','my_minify_html');
-function my_minify_html(){
-	/** 
-	 * use html_compress($html) function to minify html codes.
-	 */
-	ob_start('html_compress');
-}
-
-function html_compress($html){
-	/** 
-	 * some minify codes here ...
-	 */
- $search = array(
- '/\>[^\S ]+/s', // strip whitespaces after tags, except space
- '/[^\S ]+\</s', // strip whitespaces before tags, except space
- '/(\s)+/s' // shorten multiple whitespace sequences
- );
-
- $replace = array(
- '>',
- '<',
- '\\1'
- );
-
- $html = preg_replace($search, $replace, $html);
-
- return $html;
-}
