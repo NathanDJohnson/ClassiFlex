@@ -249,6 +249,10 @@ Version:        0.1.0
   background: #fff;
 }
 
+.header_main_bg {
+  background: #efefef;
+}
+
 .post-left {
   padding-right: 13px;
 }
