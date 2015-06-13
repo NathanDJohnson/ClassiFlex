@@ -196,7 +196,7 @@ function classiflex_customize_css() {
 		 #full-sidebar { background-color: <?php echo esc_html( $options[quaternary_color] ); ?>; }
 		<?php endif; ?>
 		
-		<?php if ( $options[secondary_color] && $options[quaternary_color]) {
+		<?php if ( $options[secondary_color] && $options[quaternary_color]) { ?>
 			.linearBg2 {
 			  background-color: <?php echo esc_html( $options[quaternary_color] ); ?>;
 			  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo esc_html( $options[quaternary_color] ); ?>), to(<?php echo esc_html( $options[secondary_color] ); ?>));
@@ -205,8 +205,8 @@ function classiflex_customize_css() {
 			  background: -ms-linear-gradient(top, <?php echo esc_html( $options[quaternary_color] ); ?>, <?php echo esc_html( $options[secondary_color] ); ?>);
 			  background: -o-linear-gradient(top, <?php echo esc_html( $options[quaternary_color] ); ?>, <?php echo esc_html( $options[secondary_color] ); ?>);
 			}
-		}
       <?php 
+      		}
          $style = ob_get_contents();
          ob_end_clean();
          
