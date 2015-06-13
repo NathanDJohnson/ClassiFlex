@@ -241,12 +241,3 @@ Version:        0.1.0
 #acurax_si_widget_simple img {
   float: left;
 }
-
-.linearBg2 {
-  background-color: #0B7300;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#313131), to(#0B7300));
-  background: -webkit-linear-gradient(top, #679325, #0B7300);
-  background: -moz-linear-gradient(top, #679325, #0B7300);
-  background: -ms-linear-gradient(top, #679325, #0B7300);
-  background: -o-linear-gradient(top, #679325, #0B7300);
-}

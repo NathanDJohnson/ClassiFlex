@@ -174,12 +174,12 @@ function classiflex_customize_css() {
     
 	<?php /* Primary color sets site title, site description, and post title */ ?>
 		<?php if ( $options[primary_color] ) : ?>
-		 h1.site-title,h1.site-title a,h2.site-description,h2.site-description a,h2.post-title,h2.post-title a,.header-widget-area{color:<?php echo esc_html( $options[primary_color] ); ?>;}
+		 h1,h2,h3,h4,h5,h6 {color:<?php echo esc_html( $options[primary_color] ); ?>;}
 		<?php endif; ?>
 
 	<?php /* Secondary color sets masthead background */ ?>
 		<?php if ( $options[secondary_color] ) : ?>
-		 #masthead { background-color: <?php echo esc_html( $options[secondary_color] ); ?>;}
+			.header_menu { background-color: <?php echo esc_html( $options[secondary_color] ); ?>;}
 		<?php endif; ?>
 
 	<?php /* Tertiary color sets main background */ ?>
@@ -195,6 +195,17 @@ function classiflex_customize_css() {
 		 #main p { color: <?php echo esc_html( $options[quaternary_color] ); ?>; }
 		 #full-sidebar { background-color: <?php echo esc_html( $options[quaternary_color] ); ?>; }
 		<?php endif; ?>
+		
+		<?php if ( $options[secondary_color] && $options[quaternary_color]) {
+			.linearBg2 {
+			  background-color: <?php echo esc_html( $options[quaternary_color] ); ?>;
+			  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo esc_html( $options[quaternary_color] ); ?>), to(<?php echo esc_html( $options[secondary_color] ); ?>));
+			  background: -webkit-linear-gradient(top, <?php echo esc_html( $options[quaternary_color] ); ?>, <?php echo esc_html( $options[secondary_color] ); ?>);
+			  background: -moz-linear-gradient(top, <?php echo esc_html( $options[quaternary_color] ); ?>, <?php echo esc_html( $options[secondary_color] ); ?>);
+			  background: -ms-linear-gradient(top, <?php echo esc_html( $options[quaternary_color] ); ?>, <?php echo esc_html( $options[secondary_color] ); ?>);
+			  background: -o-linear-gradient(top, <?php echo esc_html( $options[quaternary_color] ); ?>, <?php echo esc_html( $options[secondary_color] ); ?>);
+			}
+		}
       <?php 
          $style = ob_get_contents();
          ob_end_clean();
