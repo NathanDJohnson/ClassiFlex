@@ -203,27 +203,32 @@ function classiflex_customize_css() {
     
     ob_start(); ?>
     
-	<?php /* Primary color sets site title, site description, and post title */ ?>
+	<?php /* Primary color */ ?>
 		<?php if ( $options[primary_color] ) : ?>
 		 h1,h2,h3,h4,h5,h6,h3 a,.header div#logo h1 a {color:<?php echo esc_html( $options[primary_color] ); ?>;}
 		 .header_menu { border-top: 2px solid <?php echo esc_html( $options[primary_color] ); ?>;}
 		<?php endif; ?>
 
-	<?php /* Secondary color sets masthead background */ ?>
+	<?php /* Secondary color */ ?>
 		<?php if ( $options[secondary_color] ) : ?>
 			.header_menu { background-color: <?php echo esc_html( $options[secondary_color] ); ?>;}
 		<?php endif; ?>
 
-	<?php /* Tertiary color sets main background */ ?>
+	<?php /* Tertiary color */ ?>
 		<?php if ( $options[tertiary_color] ) : ?>
 		 footer{ 
 		 	background-color: <?php echo esc_html( $options[tertiary_color] ); ?>;
 		 }
 		<?php endif; ?>
 
-	<?php /* Quaternary color sets main text color */ ?>
+	<?php /* Quaternary color */ ?>
 		<?php if ( $options[quaternary_color] ) : ?>
 		 #main p { color: <?php echo esc_html( $options[quaternary_color] ); ?>; }
+		<?php endif; ?>
+		
+	<?php /* Quinary color */ ?>
+		<?php if ( $options[quinary_accent] ) : ?>
+		 .colour, span.colour, a, .header_top_res p a { color: <?php echo esc_html( $options[quinary_accent] ); ?>; }
 		<?php endif; ?>
 		
 		<?php if ( $options[primary_color] && $options[secondary_accent]) { ?>

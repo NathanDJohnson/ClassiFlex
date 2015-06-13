@@ -251,6 +251,11 @@ Version:        0.1.0
 .shadowblock {
   background: #fff;
 }
+.searchbutcat .btn_orange {
+  float: right;
+  margin-left: 1em;
+  vertical-align: middle;
+}
 
 .header_main_bg {
   background: #efefef;

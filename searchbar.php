@@ -19,7 +19,7 @@ if ( is_page_template( 'tpl-ads-home.php' ) || is_search() || is_404() || is_tax
 						<input name="s" type="text" id="s" tabindex="1" class="editbox_search" style="<?php cp_display_style( 'search_field_width' ); ?>" value="<?php the_search_query(); ?>" placeholder="<?php esc_attr_e( 'What are you looking for?', APP_TD ); ?>" />
 					</div>
 					<div class="searchbutcat">
-						<button class="btn-topsearch" type="submit" tabindex="3" title="<?php _e( 'Search Ads', APP_TD ); ?>" id="go" value="search" name="sa"><?php _e( 'Search Ads', APP_TD ); ?></button>
+						<button class="btn_orange" type="submit" tabindex="3" title="<?php _e( 'Search Ads', APP_TD ); ?>" id="go" value="search" name="sa"><?php _e( 'Search Ads', APP_TD ); ?></button>
 						<?php wp_dropdown_categories( $args ); ?>
 					</div>
 				</form>
