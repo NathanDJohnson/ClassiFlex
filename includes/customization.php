@@ -174,7 +174,8 @@ function classiflex_customize_css() {
     
 	<?php /* Primary color sets site title, site description, and post title */ ?>
 		<?php if ( $options[primary_color] ) : ?>
-		 h1,h2,h3,h4,h5,h6 {color:<?php echo esc_html( $options[primary_color] ); ?>;}
+		 h1,h2,h3,h4,h5,h6,#logo h1 a {color:<?php echo esc_html( $options[primary_color] ); ?>;}
+		 .header_menu { border-top: 1px solid <?php echo esc_html( $options[primary_color] ); ?>;}
 		<?php endif; ?>
 
 	<?php /* Secondary color sets masthead background */ ?>
@@ -184,8 +185,7 @@ function classiflex_customize_css() {
 
 	<?php /* Tertiary color sets main background */ ?>
 		<?php if ( $options[tertiary_color] ) : ?>
-		 #main,
-		 footer > div { 
+		 footer{ 
 		 	background-color: <?php echo esc_html( $options[tertiary_color] ); ?>;
 		 }
 		<?php endif; ?>
@@ -193,7 +193,6 @@ function classiflex_customize_css() {
 	<?php /* Quaternary color sets main text color */ ?>
 		<?php if ( $options[quaternary_color] ) : ?>
 		 #main p { color: <?php echo esc_html( $options[quaternary_color] ); ?>; }
-		 #full-sidebar { background-color: <?php echo esc_html( $options[quaternary_color] ); ?>; }
 		<?php endif; ?>
 		
 		<?php if ( $options[secondary_color] && $options[secondary_accent]) { ?>
@@ -209,8 +208,45 @@ function classiflex_customize_css() {
       		}else { ?>
   			.linearBg2 {
 			  background-color: #eee;
-			}    			
-      <?php	}
+			}	
+      <?php	} ?>
+			.btn_orange {
+				border: 0;
+			   border-top: 1px solid #3ec767;
+			   background: #185e28;
+			   background: -webkit-gradient(linear, left top, left bottom, from(#599c3e), to(#185e28));
+			   background: -webkit-linear-gradient(top, #599c3e, #185e28);
+			   background: -moz-linear-gradient(top, #599c3e, #185e28);
+			   background: -ms-linear-gradient(top, #599c3e, #185e28);
+			   background: -o-linear-gradient(top, #599c3e, #185e28);
+			   padding: 3px 6px;
+			   -webkit-border-radius: 4px;
+			   -moz-border-radius: 4px;
+			   border-radius: 4px;
+			   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+			   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+			   box-shadow: rgba(0,0,0,1) 0 1px 0;
+			   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+			   color: white;
+			   font-size: 15px;
+			   font-family: Helvetica, Arial, Sans-Serif;
+			   text-decoration: none;
+			   vertical-align: middle;
+		   }
+			.btn_orange:hover {
+				border: 0;
+				border-top: 1px solid;
+			   border-top-color: #287836;
+			   background: #287836;
+			   color: #ccc;
+		   }
+			.btn_orange:active {
+				border: 0;
+				border-top: 1px solid;
+			   border-top-color: #ffffff;
+			   background: #ffffff;
+		   }
+		<?php
          $style = ob_get_contents();
          ob_end_clean();
          
