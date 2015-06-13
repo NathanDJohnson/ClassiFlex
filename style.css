@@ -181,7 +181,10 @@ Version:        0.1.0
 .footer h3.widget-title {
   color: white;
 }
-
+.footer .widget {
+  max-width: 250px;
+  margin: auto;
+}
 #footer-sidebar {
   background-color:inherit;
 }
