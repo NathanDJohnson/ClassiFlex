@@ -241,3 +241,9 @@ Version:        0.1.0
 #acurax_si_widget_simple img {
   float: left;
 }
+
+.post-block,
+.shadowblock {
+  /* fallback */
+  background: #fff;
+}
