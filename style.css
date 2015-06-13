@@ -242,8 +242,13 @@ Version:        0.1.0
   float: left;
 }
 
+.searchblock,
+.flexslider,
 .post-block,
 .shadowblock {
-  /* fallback */
   background: #fff;
+}
+
+.post-left {
+  padding-right: 13px;
 }
