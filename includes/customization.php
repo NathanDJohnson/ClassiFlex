@@ -262,7 +262,7 @@ function classiflex_customize_css() {
 			   background: -moz-linear-gradient(top, #599c3e, #185e28);
 			   background: -ms-linear-gradient(top, #599c3e, #185e28);
 			   background: -o-linear-gradient(top, #599c3e, #185e28);
-			   padding: 3px 6px;
+			   padding: 6px 12px;
 			   -webkit-border-radius: 4px;
 			   -moz-border-radius: 4px;
 			   border-radius: 4px;
