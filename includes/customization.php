@@ -286,8 +286,9 @@ function classiflex_customize_css() {
 			.btn_orange:active {
 				border: 0;
 				border-top: 1px solid;
-			   border-top-color: #ffffff;
-			   background: #ffffff;
+			   border-top-color: #287836;
+			   background: #287836;
+			   color: #ccc;
 		   }
 		<?php
          $style = ob_get_contents();
