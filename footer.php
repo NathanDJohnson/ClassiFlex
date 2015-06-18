@@ -10,7 +10,7 @@
 global $cp_options;
 $active_footers = 0;
 ?>
-<div class="footer linearBg2">
+<div class="footer">
 	<div id="footer-sidebar" class="secondary">
 	<?php
 		if(is_active_sidebar('footer-sidebar-1')){
