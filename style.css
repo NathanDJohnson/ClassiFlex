@@ -150,26 +150,6 @@ Version:        0.1.0
   padding: 0px;
   margin: 2px;
 }
-.popup {
-  padding-top: 20px;
-  top: 0px;
-  position: absolute;
-  opacity: 0;
-  height: 100%;
-  background-color: white;
-  width: 100%;
-  z-index: 5;
-}
-.popup:hover {
-  opacity: 1;
-  background-color: #ffeeff;
-  width: calc( 100vw - 50px);
-  height: calc(100% - 20px);
-  -webkit-transition: all 500ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
-  -moz-transition: all 500ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
-  -o-transition: all 500ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
-  transition: all 500ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
-}
 
 /* Footer styling */
 #bottom-footer-sidebar {
@@ -220,6 +200,9 @@ img.header-logo {
 }
 .header_main_bg {
   padding: 5px 0;
+}
+.content_botbg {
+  background: #EFEFEF;
 }
 .post-left {
   padding-right: 13px;
