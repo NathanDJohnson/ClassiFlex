@@ -207,13 +207,14 @@ function classiflex_customize_css() {
 		<?php if ( $options[primary_color] ) : ?>
 		 h1,h2,h3,h4,h5,h6,h3 a,.header div#logo h1 a {color:<?php echo esc_html( $options[primary_color] ); ?>;}
 		 .header_menu { border-top: 2px solid <?php echo esc_html( $options[primary_color] ); ?>;}
+		 .footer { background-color: <?php echo esc_html( $options[primary_color] ); ?>; }
 		<?php endif; ?>
 
 	<?php /* Secondary color */ ?>
 		<?php if ( $options[secondary_color] ) : ?>
 			#main p.tag { color: <?php echo esc_html( $options[secondary_color] ); ?>;}
 			.header_menu { background-color: <?php echo esc_html( $options[secondary_color] ); ?>;}
-			.linearBg2 { border-top: 2px solid <?php echo esc_html( $options[secondary_color] ); ?>;}
+			.footer { border-top: 2px solid <?php echo esc_html( $options[secondary_color] ); ?>;}
 		<?php endif; ?>
 
 	<?php /* Tertiary color */ ?>
@@ -237,22 +238,7 @@ function classiflex_customize_css() {
 		<?php if ( $options[quinary_accent] ) : ?>
 		 .colour, span.colour, a, .header_top_res p a, #main p { color: <?php echo esc_html( $options[quinary_accent] ); ?>; }
 		<?php endif; ?>
-		
-		<?php if ( $options[primary_color] && $options[secondary_accent]) { ?>
-			.linearBg2 {
-			  background-color: <?php echo esc_html( $options[primary_color] ); ?>;
-			  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo esc_html( $options[primary_color] ); ?>), to(<?php echo esc_html( $options[secondary_accent] ); ?>));
-			  background: -webkit-linear-gradient(top, <?php echo esc_html( $options[primary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
-			  background: -moz-linear-gradient(top, <?php echo esc_html( $options[primary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
-			  background: -ms-linear-gradient(top, <?php echo esc_html( $options[primary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
-			  background: -o-linear-gradient(top, <?php echo esc_html( $options[primary_color] ); ?>, <?php echo esc_html( $options[secondary_accent] ); ?>);
-			}
-      <?php 
-      		}else { ?>
-  			.linearBg2 {
-			  background-color: #eee;
-			}	
-      <?php	} ?>
+
 			.btn_orange {
 				border: 0;
 			   border-top: 1px solid #3ec767;
