@@ -16,12 +16,14 @@
 				get_template_part( 'featured' ); 
 			} ?>
 			<?php
-				wp_nav_menu( array( 
-					'menu' => 'mega-menu', 
-					'theme_location' => '__no_such_location', 
-					'fallback_cb' => false,
-					'menu_id' => 'suckerfishnav' 
+				if ( has_nav_menu( 'mega-menu' ) ) {
+					wp_nav_menu( array( 
+						'menu' => 'mega-menu', 
+						'theme_location' => '__no_such_location', 
+						'fallback_cb' => false,
+						'menu_id' => 'suckerfishnav' 
 					) );
+				}
 			 ?>
 			<!-- left block -->  
 			<div class="content_left">
