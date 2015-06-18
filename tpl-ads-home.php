@@ -18,10 +18,8 @@
 			<?php
 				if ( has_nav_menu( 'mega-menu' ) ) {
 					wp_nav_menu( array( 
-						'menu' => 'mega-menu', 
-						'theme_location' => '__no_such_location', 
-						'fallback_cb' => false,
-						'menu_id' => 'suckerfishnav' 
+						'theme_location' => 'mega-menu',
+						'fallback_cb' => false
 					) );
 				}
 			 ?>
