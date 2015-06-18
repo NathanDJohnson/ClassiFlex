@@ -19,7 +19,8 @@
 				if ( has_nav_menu( 'mega-menu' ) ) {
 					wp_nav_menu( array( 
 						'theme_location' => 'mega-menu',
-						'fallback_cb' => false
+						'fallback_cb' => false,
+						'container_id' => 'centeredmenu'
 					) );
 				}
 			 ?>

@@ -14,6 +14,80 @@ Version:        0.1.0
 }
 
 /**
+ * Style buttons
+ */
+#centeredmenu {
+   float:left;
+   width:100%;
+   background: inherit;
+   margin-bottom: 1em;
+   overflow:hidden;
+   position:relative;
+}
+#centeredmenu ul {
+   clear:left;
+   float:left;
+   list-style:none;
+   margin:0;
+   padding:0;
+   position:relative;
+   left:50%;
+   text-align:center;
+}
+#centeredmenu ul li {
+   display:block;
+   float:left;
+   list-style:none;
+   margin:0;
+   padding:0;
+   position:relative;
+   right:50%;
+}
+#centeredmenu ul li a {
+	display: block;
+	padding: 6px 12px;
+	margin-left: 2px;
+	margin-right: 2px;
+}
+#centeredmenu ul li a,
+.btn_orange{ 
+	border:0;
+	border-top:1px solid #3ec767;
+	background:#185e28;
+	background:-webkit-gradient(linear,left top,left bottom,from(#599c3e),to(#185e28));
+	background:-webkit-linear-gradient(top,#599c3e,#185e28);
+	background:-moz-linear-gradient(top,#599c3e,#185e28);
+	background:-ms-linear-gradient(top,#599c3e,#185e28);
+	background:-o-linear-gradient(top,#599c3e,#185e28);
+	padding:6px 12px;-webkit-border-radius:4px;-moz-border-radius:4px;
+	border-radius:4px;-webkit-box-shadow:rgba(0,0,0,1) 0 1px 0;
+	-moz-box-shadow:rgba(0,0,0,1) 0 1px 0;
+	box-shadow:rgba(0,0,0,1) 0 1px 0;
+	text-shadow:rgba(0,0,0,.4) 0 1px 0;
+	color:white;
+	font-size:15px;
+	font-family:Helvetica,Arial,Sans-Serif;
+	text-decoration:none;
+	vertical-align:middle;
+}
+#centeredmenu ul li a:hover,
+.btn_orange:hover{
+	border:0;
+	border-top:1px solid;
+	border-top-color:#287836;
+	background:#287836;
+	color:#ccc;
+}
+#centeredmenu ul li a:active,
+.btn_orange:active{
+	border:0;
+	border-top:1px solid;
+	border-top-color: #287836;
+	background:#287836;
+	color:#ccc;
+}
+ 
+/**
  * Style the footer
  */
 .footer {
