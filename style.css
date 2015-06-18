@@ -86,7 +86,34 @@ Version:        0.1.0
 	background:#287836;
 	color:#ccc;
 }
- 
+
+/**
+ * Recent and Featured listings
+ */
+.featured-listings {
+  padding: 5px;
+  margin-bottom: 3px;
+}
+.recent-listings {
+  padding: 5px;
+  background-color: #fff;
+  margin-bottom: 3px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+.featured-listings, h3,
+.recent-listings h3 {
+  text-align: center;
+  font-size: 1.5em;
+}
+.featured-inner {
+  margin: 0 5px;
+  padding: 4px 0;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
 /**
  * Style the footer
  */

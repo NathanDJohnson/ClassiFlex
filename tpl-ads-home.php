@@ -10,6 +10,11 @@
 <div class="content">
 	<div class="content_botbg">
 		<div class="content_res">
+				<div class="featured-listings control-width">
+					<div class="featured-inner">
+						<h3>Featured Listings</h3>
+					</div>
+				</div>
 			<?php if( function_exists( 'cpflex_flexslider_slider' ) ) {
 				cpflex_flexslider_slider();
 			} else {
@@ -26,6 +31,9 @@
 			 ?>
 			<!-- left block -->  
 			<div class="content_left">
+				<div class="recent-listings">
+					<h3>Recent Listings</h3>
+				</div>
 				<div class="tabcontrol">
 					<?php
 						remove_action( 'appthemes_after_endwhile', 'cp_do_pagination' );
