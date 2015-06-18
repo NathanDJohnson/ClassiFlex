@@ -101,7 +101,7 @@ Version:        0.1.0
   border: 1px solid #bbb;
   border-radius: 5px;
 }
-.featured-listings, h3,
+.featured-listings h3,
 .recent-listings h3 {
   text-align: center;
   font-size: 1.5em;
