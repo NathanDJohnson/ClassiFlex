@@ -236,6 +236,13 @@ img.header-logo {
   border-radius: 3px;
   margin: 2px;
 }
+.post-wrapper:hover {
+  background-color: #E3D3D3;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
 .post-head h3 {
   text-align: center;
 }
@@ -256,4 +263,5 @@ img.header-logo {
 .post-content {
 	clear: right; 
 	padding-left: 15px;
+	padding-right: 5px;
 }
