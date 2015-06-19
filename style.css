@@ -207,3 +207,52 @@ img.header-logo {
 .post-left {
   padding-right: 13px;
 }
+
+
+/**
+ * Front page recent listings
+ */
+
+.tabcontrol {
+	background: #fff;
+	border: 1px solid #bbb;
+	border-radius: 5px;
+	padding: 8px;
+	height: auto;
+	min-height: 0;
+}
+
+.paging {
+	clear:both;
+}
+.post-wrapper {
+  display: inline-block;
+  width: calc( 50% - 6px );
+  height: 150px;
+  float: left;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin: 2px;
+}
+.post-head h3 {
+  text-align: center;
+}
+.post-head h3 a {
+  text-decoration: none;
+}
+.price-wrap {
+  margin: 6px;
+}
+.post-image {
+	float: left; 
+	margin-top: 10px;  
+	width: 85px; 
+	height: 85px; 
+	margin: 10px; 
+	margin-right:20px;
+}
+.post-content {
+	clear: right; 
+	padding-left: 15px;
+}
