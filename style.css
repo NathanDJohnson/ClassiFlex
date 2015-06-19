@@ -220,6 +220,7 @@ img.header-logo {
 	padding: 8px;
 	height: auto;
 	min-height: 0;
+	overflow: hidden;
 }
 
 .paging {
