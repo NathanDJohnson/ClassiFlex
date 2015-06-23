@@ -123,3 +123,38 @@ function customize_register_init( $wp_customize ){
 }
 
 add_action( 'customize_register', 'customize_register_init' );
+
+function cp_ad_loop_thumbnail() {
+	global $post, $cp_options;
+
+	// go see if any images are associated with the ad
+	$image_id = cp_get_featured_image_id( $post->ID );
+
+	// set the class based on if the hover preview option is set to "yes"
+	$prevclass = ( $cp_options->ad_image_preview ) ? 'preview' : 'nopreview';
+
+	if ( $image_id > 0 ) {
+
+		// get 75x75 v3.0.5+ image size
+		$adthumbarray = wp_get_attachment_image( $image_id, 'ad-thumb' );
+
+		// grab the large image for onhover preview
+		$adlargearray = wp_get_attachment_image_src( $image_id, 'large' );
+		$img_large_url_raw = $adlargearray[0];
+
+		// must be a v3.0.5+ created ad
+		if ( $adthumbarray ) {
+			echo '<a href="'. get_permalink() .'" title="'. the_title_attribute( 'echo=0' ) .'" class="'. $prevclass .'" data-rel="'. $img_large_url_raw .'">'. $adthumbarray .'</a>';
+
+		// maybe a v3.0 legacy ad
+		} else {
+			$adthumblegarray = wp_get_attachment_image_src($image_id, 'thumbnail');
+			$img_thumbleg_url_raw = $adthumblegarray[0];
+			echo '<a href="'. get_permalink() .'" title="'. the_title_attribute( 'echo=0' ) .'" class="'. $prevclass .'" data-rel="'. $img_large_url_raw .'">'. $adthumblegarray .'</a>';
+		}
+
+	// no image so return the placeholder thumbnail
+	} else {
+		echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '"><img class="'. $prevclass .'" alt="no image" title="" src="' . appthemes_locate_template_uri( 'images/no-thumb-75.jpg' ) . '" /></a>';
+	}
+}
