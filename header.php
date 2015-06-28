@@ -84,7 +84,7 @@ $cpuser = cp_get_user_membership_package(3);
 	<div class="header_menu">
 		<div class="header_menu_res">
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'menu-header', 'fallback_cb' => false, 'container' => false ) ); ?>
-			<a href="<?php echo CP_ADD_NEW_URL_INT; ?>" class="obtn btn_orange"><?php _e( 'Post an Ad', APP_TD ); ?></a>
+			<a href="<?php echo CP_ADD_NEW_URL_INT; ?>" class="obtn btn_orange"><?php _e( 'Sell a CannaBiz', APP_TD ); ?></a>
 			<div class="clr"></div>
 		</div><!-- /header_menu_res -->
 	</div><!-- /header_menu -->
