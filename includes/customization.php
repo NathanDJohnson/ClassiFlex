@@ -4,6 +4,31 @@ add_action( 'customize_register', 'classiflex_customize_register' );
 function classiflex_customize_register($wp_customize) {
 
 /* ------------
+ * Homepage image upload
+ * ------------ */
+ 	$wp_customize->add_section( 'classiflex_homepage_options', array(
+		'title'          => __( 'Homepage Options', 'classiflex' ),
+		'description'    => __( 'Change some stuff on the homepage', 'classiflex' ),
+		'priority'       => 40,
+	) );
+// Homepage Image
+	$wp_customize->add_setting( 'classiflex_theme_options[homepage_image]', array(
+    'default'        => get_stylesheet_directory_uri().'/flowchart.jpg',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+	) );
+	$wp_customize->add_control( 
+		new WP_Customize_Upload_Control( 
+		$wp_customize, 
+		'homepage_image', 
+		array(
+			'label'      => __( 'Homepage Image', 'classiflex' ),
+			'section'    => 'classiflex_homepage_options',
+			'settings'   => 'classiflex_theme_options[homepage_image]',
+		) ) 
+	);
+ 
+/* ------------
  * Primary Palette
  * ------------ */
    $wp_customize->add_section( 'classiflex_color_scheme', array(

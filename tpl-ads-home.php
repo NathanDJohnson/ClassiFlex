@@ -7,6 +7,9 @@
  * @since   ClassiPress 3.3
  */
 ?>
+
+<?php	$options = get_option('classiflex_theme_options'); ?>
+
 <div class="content">
 	<div class="content_botbg">
 		<div class="content_res">
@@ -32,7 +35,7 @@
 			<!-- left block -->  
 			<div class="content_left">
 				<div class="recent-listings">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/flowchart.jpg" style="max-width:100%; height:auto;">
+				<img src="<?php if ( $options[homepage_image] ){ echo $options[homepage_image]; } else{ echo get_stylesheet_directory_uri() . '/flowchart.jpg'; } ?>" style="max-width:100%; height:auto;">
 			</div>
 				<div id="recent-featured-listings" class="tabcontrol" style="display: none;" >
 					<?php
