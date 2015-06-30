@@ -10,9 +10,17 @@ Version:        0.1.0
 
 .advanced-search-link {
   clear: both;
-  float: right;
 }
-
+.advanced-search-link a {
+  margin: auto;
+  display: block;
+  text-align: center;
+  font-size: 1.25em;
+  text-decoration: none;
+}
+.advanced-search-link a:hover {
+  color: blue;
+}
 /**
  * Style buttons
  */
