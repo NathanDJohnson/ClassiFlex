@@ -19,7 +19,19 @@ global $cp_options;
 			</h3>
 		</div>
 		<div class="post-content">
-			<p class="post-content"><?php echo cp_get_content_preview( 250 ); ?></p>
+		<?php
+
+		?>
+			<p class="post-content">
+			<?php
+				if( get_user_meta( get_the_author_meta('ID'), 'active_membership_pack' ) == array('Broker') && !empty(get_post_meta( get_the_ID(), 'cp_broker_description', true ) ) ) {
+					echo get_post_meta( get_the_ID(), 'cp_broker_description', true );
+				}
+				else{
+					echo cp_get_content_preview( 250 );
+				}
+			?>
+			</p>
 			<?php appthemes_before_post_title(); // price tag?>
 		</div>
 		<?php //appthemes_after_post_title(); //post meta ?>
