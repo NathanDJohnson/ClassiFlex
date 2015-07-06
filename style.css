@@ -251,6 +251,9 @@ img.header-logo {
   -o-transition: all 1s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
+.post-head {
+  padding-top: 1em;
+}
 .post-head h3 {
   text-align: center;
 }
