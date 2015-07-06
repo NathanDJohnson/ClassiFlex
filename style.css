@@ -236,8 +236,8 @@ img.header-logo {
 }
 .post-wrapper {
   display: inline-block;
-  width: calc( 50% - 6px );
-  height: 150px;
+  width: 100%;
+  min-height: 150px;
   float: left;
   overflow: hidden;
   border: 1px solid #ddd;
