@@ -76,5 +76,6 @@ $active_footers = 0;
 <style>
 .fs{
    width: calc( <?php echo $footer_width; ?>% - <?php echo $padding_width;?>px );
+   min-width: 220px;
 }
 </style>
