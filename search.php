@@ -15,7 +15,6 @@
 	<div class="content">
 		<div class="content_botbg">
 			<div class="content_res">
-				<div id="breadcrumb"><?php cp_breadcrumb(); ?></div>
 				<!-- left block -->
 				<div class="content_left">
 					<div class="shadowblock_out">
