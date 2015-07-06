@@ -276,3 +276,7 @@ img.header-logo {
 	padding-right: 5px;
 	overflow: hidden;
 }
+
+form input {
+  max-width: 100%;
+}
