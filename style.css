@@ -273,6 +273,6 @@ img.header-logo {
 }
 .post-content {
 	clear: right; 
-	padding-left: 15px;
 	padding-right: 5px;
+	overflow: hidden;
 }

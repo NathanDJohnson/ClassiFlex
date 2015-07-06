@@ -20,7 +20,7 @@
 				<div class="content_left">
 					<div class="shadowblock_out">
 						<div class="shadowblock">
-							<h1 class="single dotted"><?php printf( __( 'Search returned %2$s results', APP_TD ), $searchTxt, $wp_query->found_posts ); ?></h1>
+							<h1 class="single dotted"><?php printf( __( 'Found %2$s results', APP_TD ), $searchTxt, $wp_query->found_posts ); ?></h1>
 						</div><!-- /shadowblock -->
 						<div class="shadowblock" style="overflow:hidden;">
 							<?php get_template_part( 'loop', 'ad_listing' ); ?>
