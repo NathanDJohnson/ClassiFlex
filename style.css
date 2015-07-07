@@ -220,13 +220,15 @@ Version:        0.1.0
 			padding: 7px;
 			font-size: 17px;
 			line-height: 33px;
-			margin: 0 15px;
+			margin: 0 15px 15px 15px;
 		}
 		.DropDownField span select{
 			border: none;
 			font-size: 17px;
 			color: #888;
 			display: block;
+			padding-bottom: 5px;
+			border-bottom: 1px solid #bbb;
 		}
 		.searchbutton {
 			float: left;
