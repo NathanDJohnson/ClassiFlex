@@ -13,6 +13,18 @@ $curauth = get_queried_object();
 $authtype = get_user_meta( get_the_author_meta('ID'), 'active_membership_pack' );
 $authtype = $authtype[0];
 
+if(is_numeric($authtype) && function_exists('ukljuci_ad_limit_jms') ){
+	$sql = "	SELECT  `post_title` 
+				FROM  `$wpdb->posts` 
+				WHERE  `ID` =  '$authtype'
+				LIMIT 1";
+		
+	$rows = $wpdb->get_results( $wpdb->prepare( $sql, '' ) );
+	foreach ( $rows as $row ) {
+		$authtype = $row->post_title;
+	}		
+}
+
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 $author_posts_count = count_user_posts( $curauth->ID );
 ?>
@@ -45,7 +57,7 @@ $author_posts_count = count_user_posts( $curauth->ID );
 				<div class="tabcontrol">
 					<div id="block1">
 						<div class="clr"></div>
-						<div class="undertab"><span class="big"><?php _e( 'Ads', APP_TD ); ?> / <strong><span class="colour"><?php _e( 'Latest items listed', APP_TD ); ?></span></strong></span></div>
+						<div class="undertab"><h3>Latest Ads</h3></div>
 						<?php query_posts( array( 'post_type' => APP_POST_TYPE, 'author' => $curauth->ID, 'paged' => $paged ) ); ?>
 						<?php get_template_part( 'loop', 'ad_listing' ); ?>
 					</div><!-- /block1 -->
