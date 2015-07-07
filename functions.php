@@ -158,3 +158,77 @@ function cp_ad_loop_thumbnail() {
 		echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '"><img class="'. $prevclass .'" alt="no image" title="" src="' . appthemes_locate_template_uri( 'images/no-thumb-75.jpg' ) . '" /></a>';
 	}
 }
+
+/**
+ * Very inefficient sorting function
+ */
+function cpc_sort_ads_by_membership( $ads ) {
+
+	$sortby = array(
+		'Broker',
+		'Basic',
+	);
+	
+	$first = array();
+	$second = array();
+	
+	if( $ads->have_posts( ) ) { 
+		foreach( $ads->posts as $post ){
+			$pack = cpc_author_membership_pack( $post->post_author );
+			
+			if( $pack == $sortby[0] ){
+				$first[] = $post;
+			}
+			else{
+				$second[] = $post;
+			}
+		}
+		$ads->posts = array_merge( $first, $second ) ; 
+	}
+	
+	return $ads;
+}
+
+/**
+ * Returns the Membership pack of a user
+ */
+function cpc_author_membership_pack( $userID ) {
+	$authtype = get_user_meta( $userID, 'active_membership_pack' );
+	$authtype = $authtype[0];
+	
+	if(is_numeric($authtype) && function_exists('ukljuci_ad_limit_jms') ){
+		$sql = "	SELECT  `post_title` 
+					FROM  `$wpdb->posts` 
+					WHERE  `ID` =  '$authtype'
+					LIMIT 1";
+		
+		$rows = $wpdb->get_results( $wpdb->prepare( $sql, '' ) );
+		foreach ( $rows as $row ) {
+			$authtype = $row->post_title;
+		}		
+	}
+	return $authtype;
+}
+
+/**
+ *
+ */
+function cpc_get_ads() {
+
+	$args = array(
+		'post_type' => APP_POST_TYPE,
+		'post_status' => 'publish',
+		'posts_per_page' => -1,
+		'no_found_rows' => true,
+		'suppress_filters' => false,
+		'ignore_sticky_posts' => true,
+		'orderby' => 'rand',
+	);
+
+	$ads = new WP_Query( $args );
+
+	if ( ! $ads->have_posts() ) {
+		return false;
+	}
+	return cpc_sort_ads_by_membership( $ads );
+}

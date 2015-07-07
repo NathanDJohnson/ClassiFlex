@@ -10,20 +10,7 @@
 //This sets the $curauth variable
 $curauth = get_queried_object();
 
-$authtype = get_user_meta( get_the_author_meta('ID'), 'active_membership_pack' );
-$authtype = $authtype[0];
-
-if(is_numeric($authtype) && function_exists('ukljuci_ad_limit_jms') ){
-	$sql = "	SELECT  `post_title` 
-				FROM  `$wpdb->posts` 
-				WHERE  `ID` =  '$authtype'
-				LIMIT 1";
-		
-	$rows = $wpdb->get_results( $wpdb->prepare( $sql, '' ) );
-	foreach ( $rows as $row ) {
-		$authtype = $row->post_title;
-	}		
-}
+$authtype = cpc_author_membership_pack( get_the_author_meta('ID') );
 
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 $author_posts_count = count_user_posts( $curauth->ID );
