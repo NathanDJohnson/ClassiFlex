@@ -16,6 +16,7 @@ function classiflex_customize_register($wp_customize) {
     'default'        => get_stylesheet_directory_uri().'/flowchart.jpg',
     'type'           => 'option',
     'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( 
 		new WP_Customize_Upload_Control( 
@@ -42,6 +43,7 @@ function classiflex_customize_register($wp_customize) {
     'default'        => '#ffffff',
     'type'           => 'option',
     'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( 
 		new WP_Customize_Color_Control( 
@@ -59,6 +61,7 @@ function classiflex_customize_register($wp_customize) {
     'default'        => '#000000',
     'type'           => 'option',
     'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( 
 		new WP_Customize_Color_Control( 
@@ -76,6 +79,7 @@ function classiflex_customize_register($wp_customize) {
     'default'        => '#000000',
     'type'           => 'option',
     'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( 
 		new WP_Customize_Color_Control( 
@@ -93,6 +97,7 @@ function classiflex_customize_register($wp_customize) {
     'default'        => '#0f0f0f',
     'type'           => 'option',
     'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( 
 		new WP_Customize_Color_Control( 
@@ -119,6 +124,7 @@ function classiflex_customize_register($wp_customize) {
     'default'        => '#ffffff',
     'type'           => 'option',
     'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( 
 		new WP_Customize_Color_Control( 
@@ -136,6 +142,7 @@ function classiflex_customize_register($wp_customize) {
     'default'        => '#000000',
     'type'           => 'option',
     'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( 
 		new WP_Customize_Color_Control( 
@@ -153,6 +160,7 @@ function classiflex_customize_register($wp_customize) {
     'default'        => '#000000',
     'type'           => 'option',
     'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( 
 		new WP_Customize_Color_Control( 
@@ -170,6 +178,7 @@ function classiflex_customize_register($wp_customize) {
     'default'        => '#0f0f0f',
     'type'           => 'option',
     'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( 
 		new WP_Customize_Color_Control( 
@@ -186,6 +195,7 @@ function classiflex_customize_register($wp_customize) {
     'default'        => '#0f0f0f',
     'type'           => 'option',
     'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( 
 		new WP_Customize_Color_Control( 
@@ -202,6 +212,7 @@ function classiflex_customize_register($wp_customize) {
     'default'        => '#0f0f0f',
     'type'           => 'option',
     'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_control( 
 		new WP_Customize_Color_Control( 

@@ -111,19 +111,29 @@ function remove_custom_post_comment() {
 }
 add_action( 'init', 'remove_custom_post_comment' );
 
-// Remove auto generated feed links
+/**
+ * Remove auto generated feed links
+ */
 function my_remove_feeds() {
 	remove_action( 'wp_head', 'feed_links_extra', 3 );
 	remove_action( 'wp_head', 'feed_links', 2 );
 }
 add_action( 'after_setup_theme', 'my_remove_feeds' );
 
+/**
+ * Remove Colors section from customization options
+ */
 function customize_register_init( $wp_customize ){
     $wp_customize->remove_section('colors');
 }
 
 add_action( 'customize_register', 'customize_register_init' );
 
+/**
+ * Function mostly copied from ClassiPress core theme
+ * Modified for listings without images
+ * And (in future ) to not display images for non-broker level members
+ */
 function cp_ad_loop_thumbnail() {
 	global $post, $cp_options;
 
@@ -162,7 +172,7 @@ function cp_ad_loop_thumbnail() {
 /**
  * Very inefficient sorting function
  */
-function cpc_sort_ads_by_membership( $ads ) {
+function cpc_sort_ads_by_membership( $ads, $sortby = '' ) {
 
 	$sortby = array(
 		'Broker',
