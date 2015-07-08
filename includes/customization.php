@@ -259,7 +259,7 @@ function classiflex_customize_css() {
     
 	<?php /* Primary color */ ?>
 		<?php if ( $options[primary_color] ) : ?>
-		 h1,h2,h3,h4,h5,h6,h3 a,.header div#logo h1 a {color:<?php echo esc_html( $options[primary_color] ); ?>;}
+		 h1,h3,h5,h3 a,.header div#logo h1 a {color:<?php echo esc_html( $options[primary_color] ); ?>;}
 		 .header_menu { border-top: 2px solid <?php echo esc_html( $options[primary_color] ); ?>;}
 		 .footer { background-color: <?php echo esc_html( $options[primary_color] ); ?>; }
 		<?php endif; ?>
@@ -267,6 +267,7 @@ function classiflex_customize_css() {
 	<?php /* Secondary color */ ?>
 		<?php if ( $options[secondary_color] ) : ?>
 			#main p.tag { color: <?php echo esc_html( $options[secondary_color] ); ?>;}
+			h2,h4,h6 {color:<?php echo esc_html( $options[secondary_color] ); ?>;}
 			.header_menu { background-color: <?php echo esc_html( $options[secondary_color] ); ?>;}
 			.footer { border-top: 2px solid <?php echo esc_html( $options[secondary_color] ); ?>;}
 		<?php endif; ?>
