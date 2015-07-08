@@ -204,23 +204,11 @@ Version:        0.1.0
 		}
 		.DropDownField {
 			float: left;
-			height: 20px;
-			border: 1px solid #BBB;
-			font-size: 14px;
-			color: #666666;
-			padding: 0.6em;
-			position: relative;
-			-khtml-border-radius: 6px;
-			-moz-border-radius: 6px;
-			-webkit-border-radius: 6px;
-			border-radius: 6px;
-			background-color: #FFF;
-			z-index: 2
-			min-height: 15px;
-			padding: 7px;
-			font-size: 17px;
-			line-height: 33px;
-			margin: 0 15px 15px 15px;
+			margin-left: 10px;
+		}
+		.searchform-input-wrapper {
+			text-align: left;
+			width: auto;
 		}
 		.DropDownField span select{
 			border: none;
@@ -230,13 +218,19 @@ Version:        0.1.0
 			padding-bottom: 5px;
 			border-bottom: 1px solid #bbb;
 		}
+		.selectBox-dropdown {
+		  margin: 0 0 10px 0 !important;
+		}
 		.searchbutton {
-			float: left;
-			margin: 0 15px;
+			float: right;
+			margin: 0 10px;
 		}
 		.searchbutcat {
-			margin: 0 15px;
+			margin: 0 10px;
 			float: left;
+		}
+		.searchbutcat {
+		  margin-left: 10px;
 		}
 
 .header_main_bg {
