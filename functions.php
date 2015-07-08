@@ -181,24 +181,19 @@ function cpc_sort_ads_by_membership( $ads ) {
 	else {
 		return $ads;
 	}
-
-	$sortby = array(
-		'Broker',
-		'Basic'
-	);
 	
 	$result = array();
 	
 	if( $ads->have_posts( ) ) { 
 		foreach( $ads->posts as $post ){
 			$pack = cpc_author_membership_pack( $post->post_author );
-			foreach( $sortby as $sort ){
+			foreach( $search_by as $sort ){
 				if( $pack == $sort ) {
 					$result[$pack][] = $post;
 				}
 			}
 		}
-		foreach( $sortby as $sort ){
+		foreach( $search_by as $sort ){
 			foreach ( $result[$sort] as $s ){
 				$newads[] = $s;
 			}
