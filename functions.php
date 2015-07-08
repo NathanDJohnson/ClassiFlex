@@ -172,30 +172,39 @@ function cp_ad_loop_thumbnail() {
 /**
  * Very inefficient sorting function
  */
-function cpc_sort_ads_by_membership( $ads, $sortby = '' ) {
+function cpc_sort_ads_by_membership( $ads ) {
+
+	$options = get_option('classiflex_theme_options');
+	if( $options['search_by'] ){
+		$search_by = explode(',', str_replace(", ",",",esc_html($options['search_by'] ) ) );
+	}
+	else {
+		return $ads;
+	}
 
 	$sortby = array(
 		'Broker',
-		'Basic',
+		'Basic'
 	);
 	
-	$first = array();
-	$second = array();
+	$result = array();
 	
 	if( $ads->have_posts( ) ) { 
 		foreach( $ads->posts as $post ){
 			$pack = cpc_author_membership_pack( $post->post_author );
-			
-			if( $pack == $sortby[0] ){
-				$first[] = $post;
-			}
-			else{
-				$second[] = $post;
+			foreach( $sortby as $sort ){
+				if( $pack == $sort ) {
+					$result[$pack][] = $post;
+				}
 			}
 		}
-		$ads->posts = array_merge( $first, $second ) ; 
-	}
-	
+		foreach( $sortby as $sort ){
+			foreach ( $result[$sort] as $s ){
+				$newads[] = $s;
+			}
+		}
+		$ads->posts = $newads ; 
+	}	
 	return $ads;
 }
 

@@ -4,7 +4,7 @@ add_action( 'customize_register', 'classiflex_customize_register' );
 function classiflex_customize_register($wp_customize) {
 
 /* ------------
- * Homepage image upload
+ * Homepage Options
  * ------------ */
  	$wp_customize->add_section( 'classiflex_homepage_options', array(
 		'title'          => __( 'Homepage Options', 'classiflex' ),
@@ -46,6 +46,34 @@ function classiflex_customize_register($wp_customize) {
 			'type'           => 'textarea',
 		) )
 	); 
+
+/* ------------
+ * Search Options
+ * ------------ */
+ 	$wp_customize->add_section( 'classiflex_search_options', array(
+		'title'          => __( 'Search Options', 'classiflex' ),
+		'description'    => __( 'Search settings', 'classiflex' ),
+		'priority'       => 41,
+	) );
+// Search by settings
+	$wp_customize->add_setting( 'classiflex_theme_options[search_by]', array(
+    'default'        => '',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+		$wp_customize,
+		'search_by',
+		array(
+			'label'          => __( 'Search Order', 'classiflex' ),
+			'section'        => 'classiflex_search_options',
+			'settings'       => 'classiflex_theme_options[search_by]',
+			'type'           => 'text',
+		) )
+	); 
+
  
 /* ------------
  * Primary Palette
