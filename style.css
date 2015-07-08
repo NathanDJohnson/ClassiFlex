@@ -250,6 +250,9 @@ img.header-logo {
   padding-right: 13px;
 }
 
+.content_left {
+  margin: 0 0 10px 0;
+}
 
 /**
  * Front page recent listings
