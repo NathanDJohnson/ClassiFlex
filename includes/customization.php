@@ -28,6 +28,24 @@ function classiflex_customize_register($wp_customize) {
 			'settings'   => 'classiflex_theme_options[homepage_image]',
 		) ) 
 	);
+// Homepage Text
+	$wp_customize->add_setting( 'classiflex_theme_options[homepage_text]', array(
+    'default'        => '',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+		$wp_customize,
+		'homepage_text',
+		array(
+			'label'          => __( 'Homepage text', 'classiflex' ),
+			'section'        => 'classiflex_homepage_options',
+			'settings'       => 'classiflex_theme_options[homepage_text]',
+			'type'           => 'textarea',
+		) )
+	); 
  
 /* ------------
  * Primary Palette
