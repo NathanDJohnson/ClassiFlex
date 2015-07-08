@@ -204,6 +204,13 @@ function cpc_sort_ads_by_membership( $ads ) {
 }
 
 /**
+ * Returns membership as a css style
+ */
+function cpc_author_membership_style( $userID ){
+	return strtolower( str_replace(' ','-', cpc_author_membership_pack( $userID ) ) );
+}
+
+/**
  * Returns the Membership pack of a user
  */
 function cpc_author_membership_pack( $userID ) {
