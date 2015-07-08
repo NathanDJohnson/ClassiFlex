@@ -193,8 +193,7 @@ function cpc_sort_ads_by_membership( $ads ) {
  * Returns the Membership pack of a user
  */
 function cpc_author_membership_pack( $userID ) {
-	$authtype = get_user_meta( $userID, 'active_membership_pack' );
-	$authtype = $authtype[0];
+	$authtype = get_user_meta( $userID, 'active_membership_pack', true );
 	
 	if(is_numeric($authtype) && function_exists('ukljuci_ad_limit_jms') ){
 		$sql = "	SELECT  `post_title` 
