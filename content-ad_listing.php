@@ -8,7 +8,7 @@
  */
 global $cp_options;
 ?>
-<div class="post-wrapper">
+<div class="post-wrapper <?php echo cpc_author_membership_style( get_the_author_meta('ID') ); ?>">
 	<div class="post-image">
 	<?php if ( $cp_options->ad_images ) cp_ad_loop_thumbnail(); ?>
 	</div>
