@@ -12,10 +12,8 @@
 
 <?php
 	global $wp_query;
-	// Override previous query
-	$wp_query = cpc_get_ads();
+	$wp_query = cpc_sort_ads_by_membership( $wp_query );
 ?>
-
 	<?php while ( have_posts() ) : the_post(); ?>
 		<?php appthemes_before_post(); ?>
 		<?php get_template_part( 'content', get_post_type() ); ?>
