@@ -193,13 +193,15 @@ function cpc_sort_ads_by_membership( $ads ) {
 				}
 			}
 		}
-		foreach( $search_by as $sort ){
-			foreach ( $result[$sort] as $s ){
-				$newads[] = $s;
+		if( count( $result ) > 1 ){
+			foreach( $search_by as $sort ){
+				foreach ( $result[$sort] as $s ){
+					$newads[] = $s;
+				}
 			}
+			$ads->posts = $newads ; 
 		}
-		$ads->posts = $newads ; 
-	}	
+	}
 	return $ads;
 }
 
@@ -231,10 +233,37 @@ function cpc_author_membership_pack( $userID ) {
 	return $authtype;
 }
 
+
 /**
- *
+ * Add custom query vars
+ */
+function cpc_add_query_vars_filter( $vars ){
+  $vars[] = "search-class";
+  $vars[] = "widget_number";
+  $vars[] = "cs-all-0";
+  $vars[] = "cs-cat--1";
+  $vars[] = "cs-cp_state-2";
+  $vars[] = "cs-cp_city-3";
+  $vars[] = "cs-cp_price-4";
+  $vars[] = "cs-cp_business_name-5";
+  return $vars;
+}
+add_filter( 'query_vars', 'cpc_add_query_vars_filter' );
+
+/**
+ * Doesn't work - so deprecated I guess
  */
 function cpc_get_ads() {
+
+  $vars["search-class"] = get_query_var( "search-class" );
+  $vars["widget_number"] = get_query_var( "widget_number" );
+  $vars["cs-all-0"] = get_query_var( "cs-all-0" );
+  $vars["cs-cat--1"] = get_query_var( "cs-cat--1" );
+  $vars["cs-cp_state-2"] = get_query_var( "cs-cp_state-2" );
+  $vars["cs-cp_city-3"] = get_query_var( "cs-cp_city-3" );
+  $vars["cs-cp_price-4"] = get_query_var( "cs-cp_price-4" );
+  $vars["cs-cp_business_name-5"] = get_query_var( "cs-cp_business_name-5" );
+ // var_dump( $vars );
 
 	$args = array(
 		'post_type' => APP_POST_TYPE,
