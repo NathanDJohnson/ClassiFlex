@@ -22,8 +22,10 @@ global $cp_options;
 			<p class="post-content">
 			<?php
 //				if( cpc_author_membership_pack( get_the_author_meta('ID') ) == 'Featured Broker' && get_post_meta( get_the_ID(), 'cp_broker_description', true ) != '' ) {
-				if( cpc_is_featured_description( get_the_author_meta('ID') ) && get_post_meta( get_the_ID(), 'cp_broker_description', true ) != '' ) {
-					echo get_post_meta( get_the_ID(), 'cp_broker_description', true );
+				if( cpc_is_featured_description( get_the_author_meta('ID') ) ) {
+					$fulldesc = get_post_meta( get_the_ID(), 'cp_broker_description', true ) . " " . wp_strip_all_tags( get_the_content() );
+					if( strlen($fulldesc) > 500){ $fulldesc = substr($fulldesc, 0, 497) . "..."; }
+					echo $fulldesc;
 				}
 				else{
 					echo cp_get_content_preview( 250 );
