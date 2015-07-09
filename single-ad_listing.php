@@ -63,11 +63,21 @@
 									<?php
 										// 3.0+ display text areas in content area before content.
 										if( cpc_is_featured_description( $post->post_author ) ) {
-											cp_get_ad_details( $post->ID, $cat_id, 'content' );
+											?>
+											<h3>Broker Description</h3>
+											<p><?php
+											echo get_post_meta( get_the_ID(), 'cp_broker_description', true );
+											?></p><?php
 										}
 									?>
 									<h3 class="description-area"><?php _e( 'Description', APP_TD ); ?></h3>
-									<?php the_content(); ?>
+									<?php 
+										$thecontent = get_the_content(); 
+										if( !cpc_is_featured_description( $post->post_author ) ){
+											$thecontent = substr($thecontent, 0, 500);
+										}
+										echo nl2br($thecontent);
+									?>
 								</div>
 								<?php appthemes_after_post_content(); ?>
 							</div><!-- /shadowblock -->
