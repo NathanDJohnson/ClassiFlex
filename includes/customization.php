@@ -85,7 +85,7 @@ function classiflex_customize_register($wp_customize) {
 		$wp_customize,
 		'featured_description',
 		array(
-			'label'          => __( 'Search Order', 'classiflex' ),
+			'label'          => __( 'Featured Description Highlight', 'classiflex' ),
 			'section'        => 'classiflex_search_options',
 			'settings'       => 'classiflex_theme_options[featured_description]',
 			'type'           => 'text',
