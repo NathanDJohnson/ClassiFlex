@@ -214,6 +214,7 @@ function cpc_author_membership_style( $userID ){
  * Returns the Membership pack of a user
  */
 function cpc_author_membership_pack( $userID ) {
+	global $wpdb;
 	$authtype = get_user_meta( $userID, 'active_membership_pack', true );
 	
 	if(is_numeric($authtype) && function_exists('ukljuci_ad_limit_jms') ){
