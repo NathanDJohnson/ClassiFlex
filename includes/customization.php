@@ -301,7 +301,31 @@ function classiflex_customize_css() {
 	$options = get_option('classiflex_theme_options');
     
     ob_start(); ?>
-    
+		
+   	<?php if ( $options['featured_description'] ) : ?>
+		<?php $featured = explode(',', str_replace(", ",",",esc_html($options['featured_description'] ) ) );
+
+			if(count($featured) > 6){ $featured = array_slice($featured, 0, 6); }
+			$fnum = count($featured);
+			$colors = array(
+							'primary_accent',
+							'secondary_accent',
+							'tertiary_accent',
+							'quaternary_accent',
+							'quinary_accent',
+							'septenary_accent'
+						);
+			if(count($colors) > count($featured)){ $colors = array_slice($colors, 0, count($featured)); }
+			if(count($featured) > count($colors)){ $featured = array_slice($featured, 0, count($colors)); }
+			$fun = array_combine( $colors, $featured );
+			
+			foreach( $fun as $k => $f ){ ?>
+				.<?php echo strtolower( str_replace(' ','-', esc_html($f) ) ); ?> { background-color: <?php echo esc_html( $options[$k] ); ?>; }
+			<?php
+			}
+		?>
+		<?php endif; ?>
+		
 	<?php /* Primary color */ ?>
 		<?php if ( $options[primary_color] ) : ?>
 		 h1,h3,h5,h3 a,.header div#logo h1 a {color:<?php echo esc_html( $options[primary_color] ); ?>;}
