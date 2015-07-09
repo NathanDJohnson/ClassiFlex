@@ -62,7 +62,9 @@
 								<div class="single-main">
 									<?php
 										// 3.0+ display text areas in content area before content.
-										cp_get_ad_details( $post->ID, $cat_id, 'content' );
+										if( cpc_is_featured_description( $post->post_author ) ) {
+											cp_get_ad_details( $post->ID, $cat_id, 'content' );
+										}
 									?>
 									<h3 class="description-area"><?php _e( 'Description', APP_TD ); ?></h3>
 									<?php the_content(); ?>
