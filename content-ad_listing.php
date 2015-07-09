@@ -19,12 +19,9 @@ global $cp_options;
 			</h3>
 		</div>
 		<div class="post-content">
-		<?php
-
-		?>
 			<p class="post-content">
 			<?php
-				if( get_user_meta( get_the_author_meta('ID'), 'active_membership_pack' ) == array('Broker') && !empty(get_post_meta( get_the_ID(), 'cp_broker_description', true ) ) ) {
+				if( cpc_author_membership_pack( get_the_author_meta('ID') ) == 'Featured Broker' && get_post_meta( get_the_ID(), 'cp_broker_description', true ) != false ) {
 					echo get_post_meta( get_the_ID(), 'cp_broker_description', true );
 				}
 				else{
