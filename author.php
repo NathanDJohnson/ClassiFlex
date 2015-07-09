@@ -10,7 +10,7 @@
 //This sets the $curauth variable
 $curauth = get_queried_object();
 
-$authtype = cpc_author_membership_pack( get_the_author_meta('ID') );
+$authtype = cpc_author_membership_pack( $curauth->ID );
 
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 $author_posts_count = count_user_posts( $curauth->ID );
