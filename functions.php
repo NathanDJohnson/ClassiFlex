@@ -169,6 +169,19 @@ function cp_ad_loop_thumbnail() {
 	}
 }
 
+function cpc_button_shortcode( $atts ) {
+	$a = shortcode_atts( array(
+		'url' => '',
+		'type' => '',
+	), $atts );
+	ob_start();
+	?>
+		<a href="<?php echo esc_html($a['url']); ?>" class="btn_orange"><?php echo esc_html($a['type']); ?></a>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'cpc-button', 'cpc_button_shortcode' );
+
 /**
  * Very inefficient sorting function
  */
