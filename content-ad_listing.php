@@ -21,7 +21,8 @@ global $cp_options;
 		<div class="post-content">
 			<p class="post-content">
 			<?php
-				if( cpc_author_membership_pack( get_the_author_meta('ID') ) == 'Featured Broker' && get_post_meta( get_the_ID(), 'cp_broker_description', true ) != '' ) {
+//				if( cpc_author_membership_pack( get_the_author_meta('ID') ) == 'Featured Broker' && get_post_meta( get_the_ID(), 'cp_broker_description', true ) != '' ) {
+				if( cpc_is_featured_description( get_the_author_meta('ID') ) && get_post_meta( get_the_ID(), 'cp_broker_description', true ) != '' ) {
 					echo get_post_meta( get_the_ID(), 'cp_broker_description', true );
 				}
 				else{

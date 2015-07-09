@@ -73,7 +73,24 @@ function classiflex_customize_register($wp_customize) {
 			'type'           => 'text',
 		) )
 	); 
-
+// Who gets a featured description
+	$wp_customize->add_setting( 'classiflex_theme_options[featured_description]', array(
+    'default'        => '',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+		$wp_customize,
+		'featured_description',
+		array(
+			'label'          => __( 'Search Order', 'classiflex' ),
+			'section'        => 'classiflex_search_options',
+			'settings'       => 'classiflex_theme_options[featured_description]',
+			'type'           => 'text',
+		) )
+	); 
  
 /* ------------
  * Primary Palette
