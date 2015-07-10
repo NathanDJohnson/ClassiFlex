@@ -10,7 +10,6 @@
 <div class="content">
 	<div class="content_botbg">
 		<div class="content_res">
-			<div id="breadcrumb"><?php cp_breadcrumb(); ?></div>
 			<div class="clr"></div>
 			<div class="content_left">
 				<?php do_action( 'appthemes_notices' ); ?>
