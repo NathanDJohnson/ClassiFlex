@@ -10,7 +10,15 @@ global $cp_options;
 ?>
 <div class="post-wrapper <?php echo cpc_author_membership_style( get_the_author_meta('ID') ); ?>">
 	<div class="post-image">
-	<?php if ( $cp_options->ad_images && cpc_is_featured_description( get_the_author_meta('ID') ) ) cp_ad_loop_thumbnail(); ?>
+	<?php if ( $cp_options->ad_images && cpc_is_featured_description( get_the_author_meta('ID') ) ) {
+				cp_ad_loop_thumbnail(); 
+			}
+			else{ ?>
+<div class="post-image">
+	<a href="<?php echo the_permalink(); ?>" title="<?php the_title(); ?>"><img class="preview" alt="no image" title="" src="http://localhost/wp-content/themes/classipress/images/no-thumb-75.jpg"></a>
+</div>
+			<?php }
+	?>
 	</div>
 	<div class="post-description">
 		<div class="post-head">
