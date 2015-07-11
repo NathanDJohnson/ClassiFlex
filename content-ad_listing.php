@@ -10,7 +10,7 @@ global $cp_options;
 ?>
 <div class="post-wrapper <?php echo cpc_author_membership_style( get_the_author_meta('ID') ); ?>">
 	<div class="post-image">
-	<?php if ( $cp_options->ad_images ) cp_ad_loop_thumbnail(); ?>
+	<?php if ( $cp_options->ad_images && cpc_is_featured_description( get_the_author_meta('ID') ) ) cp_ad_loop_thumbnail(); ?>
 	</div>
 	<div class="post-description">
 		<div class="post-head">
