@@ -14,9 +14,7 @@ global $cp_options;
 				cp_ad_loop_thumbnail(); 
 			}
 			else{ ?>
-<div class="post-image">
-	<a href="<?php echo the_permalink(); ?>" title="<?php the_title(); ?>"><img class="preview" alt="no image" title="" src="<?php echo get_template_directory_uri();?>/images/no-thumb-75.jpg"></a>
-</div>
+		<a href="<?php echo the_permalink(); ?>" title="<?php the_title(); ?>"><img class="preview" alt="no image" title="" src="<?php echo get_template_directory_uri();?>/images/no-thumb-75.jpg"></a>
 			<?php }
 	?>
 	</div>
