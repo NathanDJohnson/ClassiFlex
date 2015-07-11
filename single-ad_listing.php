@@ -58,7 +58,7 @@
 								<?php }else { ?>
 								<div class="bigleft">
 									<div id="main-pic">
-										<img class="attachment-medium" alt="" title="" src="http://localhost/wp-content/themes/classipress/images/no-thumb.jpg">
+										<img class="attachment-medium" alt="" title="" src="<?php echo get_template_directory_uri();?>/images/no-thumb.jpg">
 										<div class="clr"></div>
 									</div>
 								</div>

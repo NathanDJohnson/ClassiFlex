@@ -15,7 +15,7 @@ global $cp_options;
 			}
 			else{ ?>
 <div class="post-image">
-	<a href="<?php echo the_permalink(); ?>" title="<?php the_title(); ?>"><img class="preview" alt="no image" title="" src="http://localhost/wp-content/themes/classipress/images/no-thumb-75.jpg"></a>
+	<a href="<?php echo the_permalink(); ?>" title="<?php the_title(); ?>"><img class="preview" alt="no image" title="" src="<?php echo get_template_directory_uri();?>/images/no-thumb-75.jpg"></a>
 </div>
 			<?php }
 	?>
