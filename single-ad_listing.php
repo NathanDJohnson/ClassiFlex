@@ -44,7 +44,7 @@
 									<?php } ?>
 									</ul>
 								</div><!-- /bigright -->
-								<?php if ( $cp_options->ad_images ) { ?>
+								<?php if ( $cp_options->ad_images && cpc_is_featured_description( get_the_author_meta('ID') ) ) { ?>
 									<div class="bigleft">
 										<div id="main-pic">
 											<?php cp_get_image_url(); ?>
@@ -55,6 +55,13 @@
 											<div class="clr"></div>
 										</div>
 									</div><!-- /bigleft -->
+								<?php }else { ?>
+								<div class="bigleft">
+									<div id="main-pic">
+										<img class="attachment-medium" alt="" title="" src="http://localhost/wp-content/themes/classipress/images/no-thumb.jpg">
+										<div class="clr"></div>
+									</div>
+								</div>
 								<?php } ?>
 								<div class="clr"></div>
 								<?php appthemes_before_post_content(); ?>
