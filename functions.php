@@ -190,6 +190,7 @@ function cpc_sort_ads_by_membership( $ads ) {
 	$options = get_option('classiflex_theme_options');
 	if( $options['search_by'] ){
 		$search_by = explode(',', str_replace(", ",",",esc_html($options['search_by'] ) ) );
+		$search_by[]=''; // include ads without memberships attached at the end
 	}
 	else {
 		return $ads;
