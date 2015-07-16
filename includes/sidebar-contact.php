@@ -41,14 +41,12 @@ if ( isset( $_POST['submit'] ) && $_POST['send_email'] == 'yes' ) {
 			<div class="clr"></div>
 		</li>
 
+<?php $phone = get_user_meta( $post->post_author, 'user_phone_number', true ); ?>
 		<li>
 			<label><?php _e( 'Phone:', APP_TD ); ?></label>
-			<div style="width:289px;clear:both;" class="text" id="phone-all" data-last="7890">(123)-456-<span id="phone-last" style="cursor:pointer;background-color:aliceblue;">XXXX</span></div>
+			<div style="width:289px;clear:both;" class="text" id="phone-all" data-last="<?php echo substr($phone,-4);?>"><?php echo substr($phone,0,-4); ?><span id="phone-last" style="cursor:pointer;background-color:aliceblue;">XXXX</span></div>
 			<div class="clr"></div>
 		</li>
-<?php 
-	echo get_user_meta( $post->post_author, 'user_phone_number', true );
-?>
 <script>
 (function($) {
 	$('#phone-all').click(function() {
