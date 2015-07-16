@@ -321,3 +321,8 @@ img.header-logo {
 form input {
   max-width: 100%;
 }
+
+.listing-actions .pause a {
+  background: none;
+  display: none;
+}
