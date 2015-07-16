@@ -70,8 +70,14 @@ $active_footers = 0;
 </div><!-- /footer -->
 <?php
 	// Calculate width of footers here
-	$footer_width = 100 / $active_footers;
-	$padding_width = $active_footers * 2;
+	if( $active_footers >= 1 ){
+		$footer_width = 100 / $active_footers;
+		$padding_width = $active_footers * 2;
+	}
+	else{
+		$footer_width = 100;
+		$padding_width = 0;
+	}
 ?>
 <style>
 .fs{
