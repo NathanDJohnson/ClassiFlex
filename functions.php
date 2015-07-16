@@ -182,19 +182,45 @@ function cpc_button_shortcode( $atts ) {
 }
 add_shortcode( 'cpc-button', 'cpc_button_shortcode' );
 
+
+function cpc_get_membership_packs() {
+
+	$args = array(
+		'post_type' => array( 'package-membership' )
+	);
+	$testquery = new WP_Query( $args );
+
+	if ( $testquery->have_posts() ) {
+		$packs = array();
+		foreach( $testquery->posts as $post ){
+            $packs[] = $post->post_title;
+		}
+		return $packs;
+	}
+	return;
+}
+
 /**
- * Very inefficient sorting function
+ * Sorting function
  */
 function cpc_sort_ads_by_membership( $ads ) {
 
 	$options = get_option('classiflex_theme_options');
 	if( $options['search_by'] ){
 		$search_by = explode(',', str_replace(", ",",",esc_html($options['search_by'] ) ) );
-		$search_by[]=''; // include ads without memberships attached at the end
 	}
 	else {
 		return $ads;
 	}
+
+	// include other membership packs too	
+	foreach( cpc_get_membership_packs() as $pack ){
+		if( !in_array( $pack, $search_by ) ){
+			$search_by[] = $pack;
+		}
+	}
+
+	$search_by[]=''; // include ads without memberships attached at the end
 	
 	$result = array();
 	
