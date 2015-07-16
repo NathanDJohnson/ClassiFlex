@@ -35,7 +35,7 @@
 			<!-- left block -->  
 			<div class="content_left">
 				<div class="recent-listings">
-					<img src="<?php if ( $options[homepage_image] ){ echo $options[homepage_image]; } else{ echo get_stylesheet_directory_uri() . '/flowchart.jpg'; } ?>" style="max-width:100%; height:auto;">
+					<img src="<?php if ( $options[homepage_image] ){ echo $options[homepage_image]; } ?>" style="max-width:100%; height:auto;">
 					<p><?php if ( $options[homepage_text] ){ echo esc_html( $options[homepage_text] ); } ?></p>
 				</div>
 			</div><!-- /content_left -->
