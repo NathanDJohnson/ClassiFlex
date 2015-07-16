@@ -70,11 +70,6 @@ $cpuser = cp_get_user_membership_package(3);
 					<?php } ?>
 				</div><!-- /logo -->
 				<div class="adblock">
-					<?php if ( is_active_sidebar( 'featured-broker-sidebar' ) ) : ?>
-						<div id="featured-broker-sidebar" class="header-sidebar widget-area" role="complementary">
-							<?php dynamic_sidebar( 'featured-broker-sidebar' ); ?>
-						</div><!-- #featured-broker-sidebar -->
-					<?php endif; ?>
 					<?php // appthemes_advertise_header(); ?>
 				</div><!-- /adblock -->
 				<div class="clr"></div>
