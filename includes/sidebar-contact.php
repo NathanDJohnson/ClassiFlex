@@ -41,7 +41,7 @@ if ( isset( $_POST['submit'] ) && $_POST['send_email'] == 'yes' ) {
 			<div class="clr"></div>
 		</li>
 
-<?php $phone = get_user_meta( $post->post_author, 'user_phone_number', true ); ?>
+<?php if( $phone = get_user_meta( $post->post_author, 'user_phone_number', true ) ) { ?>
 		<li>
 			<label><?php _e( 'Phone:', APP_TD ); ?></label>
 			<div style="width:289px;clear:both;" class="text" id="phone-all" data-last="<?php echo substr($phone,-4);?>"><?php echo substr($phone,0,-4); ?><span id="phone-last" style="cursor:pointer;background-color:aliceblue;">XXXX</span></div>
@@ -56,7 +56,7 @@ if ( isset( $_POST['submit'] ) && $_POST['send_email'] == 'yes' ) {
 	});
 })(jQuery);
 </script>
-
+<?php } ?>
 		<li>
 			<label><?php _e( 'Email:', APP_TD ); ?></label>
 			<input name="from_email" id="from_email" type="text" minlength="5" value="<?php if ( isset( $_POST['from_email'] ) ) echo esc_attr( stripslashes( $_POST['from_email'] ) ); ?>" class="text required email" />
