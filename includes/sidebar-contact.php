@@ -28,7 +28,6 @@ if ( isset( $_POST['submit'] ) && $_POST['send_email'] == 'yes' ) {
 
 ?>
 
-<div>blah</div>
 <form name="mainform" id="mainform" class="form_contact" action="#priceblock2" method="post" enctype="multipart/form-data">
 
 	<?php echo $msg; ?>
@@ -41,6 +40,24 @@ if ( isset( $_POST['submit'] ) && $_POST['send_email'] == 'yes' ) {
 			<input name="from_name" id="from_name" type="text" minlength="2" value="<?php if ( isset( $_POST['from_name'] ) ) echo esc_attr( stripslashes( $_POST['from_name'] ) ); ?>" class="text required" />
 			<div class="clr"></div>
 		</li>
+
+		<li>
+			<label><?php _e( 'Phone:', APP_TD ); ?></label>
+			<div style="width:289px;clear:both;" class="text" id="phone-all" data-last="7890">(123)-456-<span id="phone-last" style="cursor:pointer;background-color:aliceblue;">XXXX</span></div>
+			<div class="clr"></div>
+		</li>
+<?php 
+	echo get_user_meta( $post->post_author, 'user_phone_number', true );
+?>
+<script>
+(function($) {
+	$('#phone-all').click(function() {
+	    $('#phone-last').text( $(this).data('last') );
+	    $("#phone-last").css({ 'cursor': "initial" });
+	    $("#phone-last").css({ 'background-color': "initial" });
+	});
+})(jQuery);
+</script>
 
 		<li>
 			<label><?php _e( 'Email:', APP_TD ); ?></label>
