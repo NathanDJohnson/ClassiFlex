@@ -23,9 +23,12 @@ a {
   float: left;
   max-width: 225px;
 }
-.searchform-controls {
+#search-bar .searchform-controls {
   float: right;
   margin-top: -50px;
+}
+.searchform-label {
+  width: 100% !important;
 }
 
 .advanced-search-link {

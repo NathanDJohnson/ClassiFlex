@@ -13,6 +13,9 @@ if ( function_exists('wp_custom_fields_search') ) :
 
 <div id="search-bar" style="border-radius:">
 	<?php	wp_custom_fields_search('preset-1'); ?>
+	<div class="advanced-search-link">
+		<a href="/advanced-search/">Advanced search...</a>
+	</div> <!-- advanced-search-link -->
 </div> <!-- .search-bar -->
 <?php
 //if ( is_page_template( 'tpl-ads-home.php' ) || is_search() || is_404() || is_tax( APP_TAX_CAT ) || is_tax( APP_TAX_TAG ) || is_singular( APP_POST_TYPE ) ) :
