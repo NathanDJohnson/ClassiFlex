@@ -12,6 +12,22 @@ a {
 	cursor: pointer;	
 }
 
+#searchform-params {
+  overflow: hidden;
+  max-width: 695px;
+}
+.TextField,
+.DropDownField {
+  overflow: hidden;
+  display: block;
+  float: left;
+  max-width: 225px;
+}
+.searchform-controls {
+  float: right;
+  margin-top: -50px;
+}
+
 .advanced-search-link {
   clear: both;
 }

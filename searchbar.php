@@ -9,7 +9,12 @@
 ?>
 <?php
 if ( function_exists('wp_custom_fields_search') ) : 
-	wp_custom_fields_search('preset-1');
+?>
+
+<div id="search-bar" style="border-radius:">
+	<?php	wp_custom_fields_search('preset-1'); ?>
+</div> <!-- .search-bar -->
+<?php
 //if ( is_page_template( 'tpl-ads-home.php' ) || is_search() || is_404() || is_tax( APP_TAX_CAT ) || is_tax( APP_TAX_TAG ) || is_singular( APP_POST_TYPE ) ) :
 else :
 	$args = cp_get_dropdown_categories_search_args( 'bar' );?>
