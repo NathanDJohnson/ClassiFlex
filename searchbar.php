@@ -8,8 +8,10 @@
  */
 ?>
 <?php
+if ( function_exists('wp_custom_fields_search') ) : 
+	wp_custom_fields_search('preset-1');
 //if ( is_page_template( 'tpl-ads-home.php' ) || is_search() || is_404() || is_tax( APP_TAX_CAT ) || is_tax( APP_TAX_TAG ) || is_singular( APP_POST_TYPE ) ) :
-if ( true ) :
+else :
 	$args = cp_get_dropdown_categories_search_args( 'bar' );?>
 	<div id="search-bar">
 		<div class="searchblock_out">
