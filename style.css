@@ -8,6 +8,10 @@ Template:       classipress
 Version:        0.1.0
 */
 
+a {
+	cursor: pointer;	
+}
+
 .advanced-search-link {
   clear: both;
 }
