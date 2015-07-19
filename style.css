@@ -12,6 +12,44 @@ a {
 	cursor: pointer;	
 }
 
+/* table on page 192 */
+.page-id-192 table td {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 2px;
+  vertical-align: middle;
+}
+
+/* don't display default search bar on advanced search page */
+body.page-id-50 #search-bar {
+  display: none;
+}
+
+/* don't display breadcrumbs */
+#breadcrumb {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* search bar */
+#search-bar{
+  overflow: hidden;
+  background: #fff;
+  border-radius: 0 0 6px 6px;
+  border: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+#rb_advcdsrch {
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+#rb_advcdsrch .shadowblock {
+	padding-bottom: 0;
+}
+
+/* search form */
 #searchform-params {
   overflow: hidden;
   max-width: 695px;
@@ -24,15 +62,24 @@ a {
   max-width: 225px;
 }
 #search-bar .searchform-controls {
-  float: right;
-  margin-top: -50px;
+  display: block;
+  overflow: hidden;
+  float: left;
+  margin: 0;
 }
 .searchform-label {
   width: 100% !important;
 }
+#total_value {
+  display: none !important;
+}
+
 
 .advanced-search-link {
-  clear: both;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
 }
 .advanced-search-link a {
   margin: auto;
@@ -44,6 +91,7 @@ a {
 .advanced-search-link a:hover {
   color: blue;
 }
+
 /**
  * Style buttons
  */
