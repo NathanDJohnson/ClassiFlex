@@ -397,3 +397,9 @@ form input {
   background: none;
   display: none;
 }
+
+/* newsletter */
+.wpcf7-form-control-wrap {
+  display: block;
+  clear: both;
+}
