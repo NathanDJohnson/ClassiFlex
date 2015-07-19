@@ -91,6 +91,117 @@ function classiflex_customize_register($wp_customize) {
 			'type'           => 'text',
 		) )
 	); 
+/* ------------
+ * Social Options
+ * ------------ */
+ 	$wp_customize->add_section( 'classiflex_social_options', array(
+		'title'          => __( 'Social Options', 'classiflex' ),
+		'description'    => __( 'Links to social media', 'classiflex' ),
+		'priority'       => 42,
+	) );
+// Facebook
+	$wp_customize->add_setting( 'classiflex_theme_options[facebook_url]', array(
+    'default'        => '',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+		$wp_customize,
+		'facebook_url',
+		array(
+			'label'          => __( 'Facebook URL', 'classiflex' ),
+			'section'        => 'classiflex_social_options',
+			'settings'       => 'classiflex_theme_options[facebook_url]',
+			'type'           => 'text',
+		) )
+	); 
+	$wp_customize->add_setting( 'classiflex_theme_options[facebook_photo_url]', array(
+    'default'        => '',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( 
+		new WP_Customize_Upload_Control( 
+		$wp_customize, 
+		'facebook_photo_url', 
+		array(
+			'label'      => __( 'Facebook Photo', 'classiflex' ),
+			'section'    => 'classiflex_social_options',
+			'settings'   => 'classiflex_theme_options[facebook_photo_url]',
+		) ) 
+	);
+
+// Twitter
+	$wp_customize->add_setting( 'classiflex_theme_options[twitter_url]', array(
+    'default'        => '',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+		$wp_customize,
+		'twitter_url',
+		array(
+			'label'          => __( 'Twitter URL', 'classiflex' ),
+			'section'        => 'classiflex_social_options',
+			'settings'       => 'classiflex_theme_options[twitter_url]',
+			'type'           => 'text',
+		) )
+	); 
+	$wp_customize->add_setting( 'classiflex_theme_options[twitter_photo_url]', array(
+    'default'        => '',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( 
+		new WP_Customize_Upload_Control( 
+		$wp_customize, 
+		'twitter_photo_url', 
+		array(
+			'label'      => __( 'Twitter Photo', 'classiflex' ),
+			'section'    => 'classiflex_social_options',
+			'settings'   => 'classiflex_theme_options[twitter_photo_url]',
+		) ) 
+	);
+// LinkedIn
+	$wp_customize->add_setting( 'classiflex_theme_options[linkedin_url]', array(
+    'default'        => '',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+		$wp_customize,
+		'linkedin_url',
+		array(
+			'label'          => __( 'LinkedIn URL', 'classiflex' ),
+			'section'        => 'classiflex_social_options',
+			'settings'       => 'classiflex_theme_options[linkedin_url]',
+			'type'           => 'text',
+		) )
+	); 
+	$wp_customize->add_setting( 'classiflex_theme_options[linkedin_photo_url]', array(
+    'default'        => '',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'esc_url_raw',
+	) );
+	$wp_customize->add_control( 
+		new WP_Customize_Upload_Control( 
+		$wp_customize, 
+		'linkedin_photo_url', 
+		array(
+			'label'      => __( 'LinkedIn Photo', 'classiflex' ),
+			'section'    => 'classiflex_social_options',
+			'settings'   => 'classiflex_theme_options[linkedin_photo_url]',
+		) ) 
+	);
  
 /* ------------
  * Primary Palette
@@ -356,6 +467,8 @@ function classiflex_customize_css() {
 	<?php /* Tertiary accent */ ?>
 		<?php if ( $options[tertiary_accent] ) : ?>
 		 p.post-price { background-color: <?php echo esc_html( $options[tertiary_accent] ); ?>; }
+		.tag { background-color: <?php echo esc_html( $options[tertiary_accent] ); ?>; }
+		.tag:before { border-right: 19px solid <?php echo esc_html( $options[tertiary_accent] ); ?>; }
 		<?php endif; ?>
 		
 	<?php /* Quinary accent */ ?>
