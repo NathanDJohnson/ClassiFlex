@@ -8,6 +8,11 @@ Template:       classipress
 Version:        0.1.0
 */
 
+
+.container {
+	background-color: #efefef;
+}
+
 a {
 	cursor: pointer;	
 }
@@ -41,6 +46,7 @@ body.page-id-50 #search-bar {
   padding-bottom: 10px;
 }
 #rb_advcdsrch {
+  width: initial !important;
   border: none;
   border-radius: 0;
   margin-bottom: 0;
