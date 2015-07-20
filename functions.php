@@ -342,3 +342,9 @@ function cpc_get_ads() {
 	}
 	return cpc_sort_ads_by_membership( $ads );
 }
+
+/* inital caps for <title> */
+function cpc_wp_title( $title, $sep ) {
+	return trim( ucwords( strtolower ( $title ) ) );
+}
+add_filter( 'wp_title', 'cpc_wp_title', 10, 2 );
