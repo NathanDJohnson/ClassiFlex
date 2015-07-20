@@ -343,8 +343,18 @@ function cpc_get_ads() {
 	return cpc_sort_ads_by_membership( $ads );
 }
 
+function cpc_initial_caps( $string ){
+	$string = ucwords( strtolower( $string ) );
+
+	// special cases like McDonald, P.O. Box, etc.
+	$prefixes = 'Mc|P.';
+	$string = preg_replace("/\\b($prefixes)(\\w)/e", '"$1".strtoupper("$2")', $string);
+
+	return $string;
+}
+
 /* inital caps for <title> */
 function cpc_wp_title( $title, $sep ) {
-	return trim( ucwords( strtolower ( $title ) ) );
+	return cpc_initial_caps( trim( $title ) );
 }
 add_filter( 'wp_title', 'cpc_wp_title', 10, 2 );
