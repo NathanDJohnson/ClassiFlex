@@ -21,7 +21,7 @@ global $cp_options;
 	<div class="post-description">
 		<div class="post-head">
 			<h3>
-				<a href="<?php the_permalink(); ?>"><?php if ( mb_strlen( get_the_title() ) >= 75 ) echo mb_substr( get_the_title(), 0, 75 ) . '...'; else the_title(); ?></a>
+				<a href="<?php the_permalink(); ?>"><?php if ( mb_strlen( get_the_title() ) >= 75 ) echo mb_substr( ucwords( strtolower( get_the_title(), 0, 75 ) ) ) . '...'; else echo ucwords(strtolower( get_the_title() ) ) ; ?></a>
 			</h3>
 		</div>
 		<div class="post-content">
