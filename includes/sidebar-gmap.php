@@ -75,7 +75,7 @@ function cp_google_maps_js( $coordinates ) {
     var toAdd;
     var redFlag = "<?php echo esc_js( appthemes_locate_template_uri( 'images/red-flag.png' ) ); ?>";
     var noLuck = "<?php echo esc_js( appthemes_locate_template_uri( 'images/gmaps-no-result.gif' ) ); ?>";
-    var adTitle = "<?php echo ucwords(strtolower( esc_js( get_the_title() ) ) ) ; ?>";
+    var adTitle = "<?php echo cpc_initial_caps( esc_js( get_the_title() ) ); ?>";
     var contentString = '<div id="mcwrap"><span>' + adTitle + '</span><br />' + address + '</div>';
 
 		function map_init() {
