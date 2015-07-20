@@ -11,7 +11,7 @@
 if ( function_exists('wp_custom_fields_search') ) : 
 ?>
 
-<div id="search-bar" style="border-radius:">
+<div id="search-bar">
 	<?php	wp_custom_fields_search('preset-1'); ?>
 	<div class="advanced-search-link">
 		<a href="/advanced-search/">Advanced search...</a>
