@@ -473,7 +473,7 @@ function classiflex_customize_css() {
 		
 	<?php /* Quinary accent */ ?>
 		<?php if ( $options[quinary_accent] ) : ?>
-		 .colour, span.colour, a, .header_top_res p a, #main p { color: <?php echo esc_html( $options[quinary_accent] ); ?>; }
+		 .colour, span.colour, a, .header_top_res p a { color: <?php echo esc_html( $options[quinary_accent] ); ?>; }
 		<?php endif; ?>
 
 			.btn_orange {

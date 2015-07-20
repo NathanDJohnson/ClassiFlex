@@ -95,7 +95,7 @@ body.page-id-50 #search-bar {
   text-decoration: none;
 }
 .advanced-search-link a:hover {
-  color: blue;
+  color: #e3e3e3;
 }
 
 /**
@@ -435,6 +435,12 @@ form input {
   text-align: center;
 }
 
+/* reset */
 p:empty {
   display: none;
+}
+a:hover, 
+.content_res .priceblockbig h3 a:hover, 
+.content_right a:hover{
+  text-decoration: none;
 }
