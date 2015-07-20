@@ -21,7 +21,7 @@
 						<div class="shadowblock_out <?php cp_display_style( 'featured' ); ?>">
 							<div class="shadowblock">
 								<?php appthemes_before_post_title(); ?>
-								<h1 class="single-listing"><a href="<?php the_permalink(); ?>" title="<?php echo ucwords(strtolower( get_the_title() ) ) ; ?>"><?php echo ucwords(strtolower( get_the_title() ) ) ; ?></a></h1>
+								<h1 class="single-listing"><a href="<?php the_permalink(); ?>" title="<?php echo cpc_initial_caps( get_the_title() ) ; ?>"><?php echo cpc_initial_caps( get_the_title() ) ; ?></a></h1>
 								<div class="clr"></div>
 								<?php appthemes_after_post_title(); ?>
 								<div class="pad5 dotted"></div>
