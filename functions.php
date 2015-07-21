@@ -347,7 +347,7 @@ function cpc_initial_caps( $string ){
 	$string = ucwords( strtolower( $string ) );
 
 	// special cases like McDonald, P.O. Box, etc.
-	$prefixes = 'Mc|P.';
+	$prefixes = 'Mc|P\.';
 	$string = preg_replace("/\\b($prefixes)(\\w)/e", '"$1".strtoupper("$2")', $string);
 
 	return $string;
