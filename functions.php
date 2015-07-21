@@ -358,3 +358,17 @@ function cpc_wp_title( $title, $sep ) {
 	return cpc_initial_caps( trim( $title ) );
 }
 add_filter( 'wp_title', 'cpc_wp_title', 10, 2 );
+
+if(!function_exists('get_the_slug')){
+function get_the_slug( $id=null ){
+  if( empty($id) ):
+    global $post;
+    if( empty($post) )
+      return ''; // No global $post var available.
+    $id = $post->ID;
+  endif;
+
+  $slug = basename( get_permalink($id) );
+  return $slug;
+}
+}
