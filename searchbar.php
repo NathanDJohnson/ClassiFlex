@@ -8,6 +8,9 @@
  */
 ?>
 <?php
+	if( is_page('listing-types') || is_page('create-listing') ){
+		return;
+	}
 if ( function_exists('wp_custom_fields_search') ) : 
 ?>
 
