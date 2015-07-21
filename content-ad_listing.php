@@ -21,7 +21,7 @@ global $cp_options;
 	<div class="post-description">
 		<div class="post-head">
 			<h3>
-				<a href="<?php the_permalink(); ?>"><?php if ( mb_strlen( get_the_title() ) >= 75 ) echo mb_substr( cpc_inital_caps( get_the_title(), 0, 75 ) ) . '...'; else echo cpc_initial_caps( get_the_title() ) ; ?></a>
+				<a href="<?php the_permalink(); ?>"><?php if ( mb_strlen( esc_html( get_the_title() ) ) >= 75 ) echo mb_substr( cpc_inital_caps( esc_html( get_the_title() ), 0, 75 ) ) . '...'; else echo cpc_initial_caps( esc_html( get_the_title() ) ) ; ?></a>
 			</h3>
 		</div>
 		<div class="post-content">
