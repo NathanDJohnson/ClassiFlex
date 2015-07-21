@@ -8,7 +8,13 @@
  */
 ?>
 <?php
-	if( is_page('listing-types') || is_page('create-listing') ){
+	global $post;
+	if( is_page('listing-types') 
+		|| is_page('create-listing') 
+		|| is_page('become-a-broker') 
+		|| is_page('find-a-cannabiz-broker') 
+		|| get_the_slug( $post->post_parent )=='find-a-cannabiz-broker' )
+	{
 		return;
 	}
 if ( function_exists('wp_custom_fields_search') ) : 
