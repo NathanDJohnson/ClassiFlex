@@ -435,6 +435,13 @@ form input {
   text-align: center;
 }
 
+div#main-pic a img{
+  max-width: 100%;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
 /* reset */
 p:empty {
   display: none;
