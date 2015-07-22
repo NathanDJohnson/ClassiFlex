@@ -521,7 +521,7 @@ function classiflex_customize_css() {
 		 .colour, span.colour, a, .header_top_res p a { color: <?php echo esc_html( $options[quinary_accent] ); ?>; }
 		<?php endif; ?>
 
-			.input.wpcf7-form-control.wpcf7-submit,
+			input.wpcf7-form-control.wpcf7-submit,
 			.btn_orange {
 				border: 0;
 			   border-top: 1px solid #3ec767;
@@ -545,7 +545,7 @@ function classiflex_customize_css() {
 			   text-decoration: none;
 			   vertical-align: middle;
 		   }
-			.input.wpcf7-form-control.wpcf7-submit:hover,
+			input.wpcf7-form-control.wpcf7-submit:hover,
 			.btn_orange:hover {
 				border: 0;
 				border-top: 1px solid;
@@ -553,7 +553,7 @@ function classiflex_customize_css() {
 			   background: #287836;
 			   color: #ccc;
 		   }
-			.input.wpcf7-form-control.wpcf7-submit:active,
+			input.wpcf7-form-control.wpcf7-submit:active,
 			.btn_orange:active {
 				border: 0;
 				border-top: 1px solid;
