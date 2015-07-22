@@ -92,8 +92,52 @@ function classiflex_customize_register($wp_customize) {
 		) )
 	); 
 /* ------------
+ * Limit images by membership type
+ * ------------ */
+ /*
+ 	$wp_customize->add_section( 'classiflex_member_images', array(
+		'title'          => __( 'Membership Images', 'classiflex' ),
+		'description'    => __( 'Limit Images based on membership', 'classiflex' ),
+		'priority'       => 43,
+	) );
+
+// select membership group
+	$args = array(
+		'post_type' => array( 'package-membership' )
+	);
+	$testquery = new WP_Query( $args );
+
+	if ( $testquery->have_posts() ) {
+		foreach( $testquery->posts as $post ){
+			$title = $post->post_title;
+			$type = strtolower( str_replace( " ", "-", $title ) );
+			$this_type = "classiflex_theme_options[images-$type]";
+
+			$wp_customize->add_setting( $this_type, array(
+		    'default'        => '',
+		    'type'           => 'option',
+		    'capability'     => 'edit_theme_options',
+		    'sanitize_callback' => 'sanitize_text_field',
+			) );			
+			$wp_customize->add_control(
+				new WP_Customize_Control(
+				$wp_customize,
+				$this_type,
+				array(
+					'label'          => __( $title, 'classiflex' ),
+					'section'        => 'classiflex_member_images',
+					'settings'       => $this_type,
+					'type'           => 'text',
+				) )
+			);
+		}
+	}
+*/
+
+/* ------------
  * Social Options
  * ------------ */
+/* NOT FUNCTIONAL YET!
  	$wp_customize->add_section( 'classiflex_social_options', array(
 		'title'          => __( 'Social Options', 'classiflex' ),
 		'description'    => __( 'Links to social media', 'classiflex' ),
@@ -202,6 +246,7 @@ function classiflex_customize_register($wp_customize) {
 			'settings'   => 'classiflex_theme_options[linkedin_photo_url]',
 		) ) 
 	);
+*/
  
 /* ------------
  * Primary Palette
@@ -476,6 +521,7 @@ function classiflex_customize_css() {
 		 .colour, span.colour, a, .header_top_res p a { color: <?php echo esc_html( $options[quinary_accent] ); ?>; }
 		<?php endif; ?>
 
+			.input.wpcf7-form-control.wpcf7-submit,
 			.btn_orange {
 				border: 0;
 			   border-top: 1px solid #3ec767;
@@ -499,6 +545,7 @@ function classiflex_customize_css() {
 			   text-decoration: none;
 			   vertical-align: middle;
 		   }
+			.input.wpcf7-form-control.wpcf7-submit:hover,
 			.btn_orange:hover {
 				border: 0;
 				border-top: 1px solid;
@@ -506,6 +553,7 @@ function classiflex_customize_css() {
 			   background: #287836;
 			   color: #ccc;
 		   }
+			.input.wpcf7-form-control.wpcf7-submit:active,
 			.btn_orange:active {
 				border: 0;
 				border-top: 1px solid;
