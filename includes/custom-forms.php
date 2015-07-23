@@ -495,6 +495,7 @@ function cp_show_review( $postvals ) {
  *
  * @return void
  */
+if( !function_exists( 'cp_other_fields' ) ) :
 function cp_other_fields( $listing_id ) {
 	global $cp_options;
 
@@ -576,7 +577,7 @@ function cp_other_fields( $listing_id ) {
 	}
 
 }
-
+endif;
 
 /**
  * Displays image upload fields on create ad page.
