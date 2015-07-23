@@ -50,10 +50,15 @@
 											<?php cp_get_image_url(); ?>
 											<div class="clr"></div>
 										</div>
+										<?php	if( cpc_is_featured_description( get_the_author_meta('ID') ) ) : ?>
 										<div id="thumbs-pic">
-											<?php cp_get_image_url_single( $post->ID, 'thumbnail', $post->post_title, -1 ); ?>
+											<?php
+												$allowed_images = cpc_allowed_imaged_by_membership( cpc_author_membership_pack( get_the_author_meta('ID') ) );
+												cp_get_image_url_single( $post->ID, 'thumbnail', $post->post_title, $allowed_images-1 );
+											?>
 											<div class="clr"></div>
 										</div>
+										<?php endif; ?>
 									</div><!-- /bigleft -->
 								<?php }else { ?>
 								<div class="bigleft">
