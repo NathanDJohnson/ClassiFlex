@@ -169,6 +169,19 @@ function cp_ad_loop_thumbnail() {
 	}
 }
 
+function cpc_hr_shortcode( $atts ){
+	$a = shortcode_atts( array(
+		'url' => '',
+		'type' => '',
+	), $atts );
+	ob_start();
+	?>
+		<img src="<?php echo get_stylesheet_directory_uri();?>/images/DottedRule.png" alt="Icon_CheckMark" class="no-shadow maxwidth">
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'cpc-hr', 'cpc_hr_shortcode' );
+
 function cpc_button_shortcode( $atts ) {
 	$a = shortcode_atts( array(
 		'url' => '',
@@ -293,6 +306,18 @@ function cpc_author_membership_pack( $userID ) {
 	return $authtype;
 }
 
+/**
+ *
+ */
+function cpc_allowed_imaged_by_membership( $membership_pack ){
+	$options = get_option('classiflex_theme_options');
+	
+	$type = "classiflex_theme_options[images-$membership_pack]";
+	if( $options[$type] ){
+		return max( 1, $options[$type] );
+	}
+	else return 0;
+}
 
 /**
  * Add custom query vars
