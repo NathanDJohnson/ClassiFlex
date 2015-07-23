@@ -8,6 +8,17 @@ Template:       classipress
 Version:        0.1.0
 */
 
+/* custom font */
+@font-face {
+  font-family: 'myriad';
+  src: url('/wp-content/themes/classipress-child/includes/fonts/MyriadWebPro.ttf');
+  src: url('/wp-content/themes/classipress-child/includes/fonts/MyriadWebPro.ttf') format('truetype'), 
+       url('/wp-content/themes/classipress-child/includes/fonts/MyriadPro-Regular.otf')  format('truetype');
+}
+body,h1,h2,h3,h4,h5,h6,p,.tag {
+  font-family: 'myriad', sans-serif;
+}
+
 
 .container {
 	background-color: #efefef;
@@ -25,8 +36,21 @@ a {
   vertical-align: middle;
 }
 
+/* images some shipped with box-shadows */
+img.no-shadow {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+}
+img.maxwidth{
+	max-width: 100%;
+}
+
 /* don't display default search bar on advanced search page */
 body.page-id-50 #search-bar {
+  display: none;
+}
+.page-id-129 #search-bar {
   display: none;
 }
 
@@ -82,10 +106,9 @@ body.page-id-50 #search-bar {
 
 
 .advanced-search-link {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px;
+  display: block;
+  float: left;
+  margin-left: 20px;
 }
 .advanced-search-link a {
   margin: auto;
@@ -440,6 +463,11 @@ div#main-pic a img{
   border: none;
   box-shadow: none;
   padding: 0;
+}
+
+/* wc-shortcodes-tabs */
+.wc-shortcodes-tabs li {
+    margin-left: -20px;
 }
 
 /* reset */
