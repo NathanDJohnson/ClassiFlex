@@ -15,18 +15,33 @@ Version:        0.1.0
   src: url('/wp-content/themes/classipress-child/includes/fonts/MyriadWebPro.ttf') format('truetype'), 
        url('/wp-content/themes/classipress-child/includes/fonts/MyriadPro-Regular.otf')  format('truetype');
 }
-body,h1,h2,h3,h4,h5,h6,p,.tag {
-  font-family: 'myriad', sans-serif;
+* {
+  font-family: 'myriad', sans-serif !important;
 }
+
+/* resets */
+a, 
+a:hover,
+input[type=submit] {
+	text-decoration: none !important;
+	cursor: pointer !important;	
+}
+a:hover, 
+.content_res .priceblockbig h3 a:hover, 
+.content_right a:hover{
+	text-decoration: none;
+}
+p:empty {
+	display: none;
+}
+
 
 
 .container {
 	background-color: #efefef;
 }
 
-a {
-	cursor: pointer;	
-}
+
 
 /* table on page 192 */
 .page-id-192 table td {
@@ -44,6 +59,11 @@ img.no-shadow {
 }
 img.maxwidth{
 	max-width: 100%;
+}
+
+/* hide rss icon */
+.header_top_res p a.srvicon {
+    display: none;
 }
 
 /* don't display default search bar on advanced search page */
@@ -470,12 +490,13 @@ div#main-pic a img{
     margin-left: -20px;
 }
 
-/* reset */
-p:empty {
-  display: none;
-}
-a:hover, 
-.content_res .priceblockbig h3 a:hover, 
-.content_right a:hover{
-  text-decoration: none;
+/**
+	Media queries
+**/
+@media screen and (max-width: 400px) {
+	.post-image {
+		width: 100%;
+		text-align: center;
+		margin: 10px 0;
+	}
 }
