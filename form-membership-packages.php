@@ -48,8 +48,8 @@
 												}
 										?>
 												<tr class="<?php echo $rowclass . ' ' . $requiredClass; ?>">
-													<td><strong><?php echo $package->pack_name; ?></strong><a class="tip" tip="<?php echo $package->description; ?>" tabindex="99"><div class="helpico"></div></a></td>
-													<td><?php echo $benefit; ?></td>
+													<td><strong><?php echo $package->pack_name; ?></strong></td>
+													<td><?php echo $package->description; ?></td>
 													<td><?php printf( __( '%1$s / %2$s days', APP_TD ), appthemes_get_price( $package->price ), $package->duration ); ?></td>
 													<td><input type="submit" name="step1" id="step1" class="btn_orange" onclick="document.getElementById('pack').value=<?php echo $package->ID; ?>;" value="<?php echo esc_attr_e( 'Buy Now &rsaquo;&rsaquo;', APP_TD ); ?>" style="margin-left: 5px; margin-bottom: 5px;" /></td>
 												</tr>
