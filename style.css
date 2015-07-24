@@ -41,7 +41,10 @@ p:empty {
 	background-color: #efefef;
 }
 
-
+/* hide link on /listing-types/ page */
+.page-id-91 a.obtn.btn_orange {
+    display: none;
+}
 
 /* table on page 192 */
 .page-id-192 table td {
@@ -102,7 +105,7 @@ body.page-id-50 #search-bar {
 /* search form */
 #searchform-params {
   overflow: hidden;
-  max-width: 695px;
+  /*max-width: 695px;*/
 }
 .TextField,
 .DropDownField {
@@ -322,6 +325,7 @@ body.page-id-50 #search-bar {
 			max-width: 220px;
 			margin: 0 10px;
 		}
+		.TextField,
 		.DropDownField {
 			float: left;
 			margin-left: 10px;
@@ -494,9 +498,52 @@ div#main-pic a img{
 	Media queries
 **/
 @media screen and (max-width: 400px) {
+	/* search listing images */
 	.post-image {
 		width: 100%;
 		text-align: center;
 		margin: 10px 0;
+		height: auto;
+	}
+	.post-image img.no-image{
+		display: none;
+	}
+	/* full width */
+	#search-bar,
+	.content_res {
+		width: calc( 100% - 2px );
+		padding: 0;
+		overflow: hidden;
+	}
+	/* search fields */
+	.TextField,
+	.DropDownField {
+		display: block;
+		clear: both;
+	}
+	/* Header */
+	a.obtn.btn_orange {
+		clear: both;
+		display: block;
+		float: left;
+	}
+	/* centered menu */
+	#centeredmenu {
+		margin-top: 20px;
+	}
+	/* shadowblock */
+	.shadowblock_out{
+		margin-bottom: 5px;
+	}
+	/* user box */
+	.user p {
+		text-align: left;
+	}
+	.user {
+		text-align: center;
+		padding: 10px 10px 0 10px;
+	}
+	.avatar {
+		display: none;
 	}
 }
