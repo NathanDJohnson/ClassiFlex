@@ -495,6 +495,7 @@ function classiflex_customize_css() {
 			h2,h4,h6 {color:<?php echo esc_html( $options[secondary_color] ); ?>;}
 			.header_menu { background-color: <?php echo esc_html( $options[secondary_color] ); ?>;}
 			.footer { border-top: 2px solid <?php echo esc_html( $options[secondary_color] ); ?>;}
+			.colour, span.colour, a, .header_top_res p a { color: <?php echo esc_html( $options[secondary_color] ); ?>; }
 		<?php endif; ?>
 	<?php /* Tertiary color */ ?>
 		<?php if ( $options[tertiary_color] ) : ?>
@@ -522,10 +523,12 @@ function classiflex_customize_css() {
 		<?php endif; ?>
 	<?php /* Quinary accent */ ?>
 		<?php if ( $options[quinary_accent] ) : ?>
-		 .colour, span.colour, a, .header_top_res p a { color: <?php echo esc_html( $options[quinary_accent] ); ?>; }
-		 p.post-price { background-color: <?php echo esc_html( $options[quinary_accent] ); ?>; }
 		.tag { background-color: <?php echo esc_html( $options[quinary_accent] ); ?>; }
 		.tag:before { border-right: 19px solid <?php echo esc_html( $options[quinary_accent] ); ?>; }
+		<?php endif; ?>
+	<?php /* Septenary accent */ ?>
+		<?php if ( $options[septenary_accent] ) : ?>
+		 p.post-price { background-color: <?php echo esc_html( $options[septenary_accent] ); ?>; }
 		<?php endif; ?>
 
 			input.wpcf7-form-control.wpcf7-submit,
