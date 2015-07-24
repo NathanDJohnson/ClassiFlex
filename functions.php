@@ -178,7 +178,7 @@ function cpc_hr_shortcode( $atts ){
 	?>
 		<img src="<?php echo get_stylesheet_directory_uri();?>/images/DottedRule.png" alt="Icon_CheckMark" class="no-shadow maxwidth">
 	<?php
-	return ob_get_clean();
+	return apply_filters( 'cpc_hr_shortcode_html', ob_get_clean() );
 }
 add_shortcode( 'cpc-hr', 'cpc_hr_shortcode' );
 
@@ -396,4 +396,9 @@ function get_the_slug( $id=null ){
   $slug = basename( get_permalink($id) );
   return $slug;
 }
+}
+
+/* author slug */
+function cpc_author_slug(){
+	return $GLOBALS['wp_rewrite']->author_base;
 }
