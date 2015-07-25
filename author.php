@@ -18,12 +18,12 @@ $author_posts_count = count_user_posts( $curauth->ID );
 <div class="content">
 	<div class="content_botbg">
 		<div class="content_res">
-			<div id="breadcrumb"><?php cp_breadcrumb(); ?></div>
 			<!-- left block -->
 			<div class="content_left">
 				<div class="shadowblock_out">
 					<div class="shadowblock">
 						<h1 class="single dotted"><?php printf( __( 'About %s', APP_TD ), $curauth->display_name ); ?></h1>
+						<?php if( cpc_is_featured_description( $curauth->ID ) ) :?>
 						<div class="post">
 							<div id="user-photo"><?php appthemes_get_profile_pic($curauth->ID, $curauth->user_email, 96); ?></div>
 							<div class="author-main">
@@ -39,18 +39,27 @@ $author_posts_count = count_user_posts( $curauth->ID );
 							<h3 class="dotted"><?php _e( 'Description', APP_TD ); ?></h3>
 							<p><?php echo nl2br( $curauth->user_description ); ?></p>
 						</div><!--/post-->
+						<?php else: ?>
+							<div class="not-broker">
+								<p>This user is not a broker.</p>
+							</div>
+						<?php endif; ?>
 					</div><!-- /shadowblock -->
 				</div><!-- /shadowblock_out -->
+				<?php if( cpc_is_featured_description( $curauth->ID ) ) :?>
 				<div class="tabcontrol">
 					<div id="block1">
 						<div class="clr"></div>
 						<div class="undertab"><h3>Latest Ads</h3></div>
-						<?php query_posts( array( 'post_type' => APP_POST_TYPE, 'author' => $curauth->ID, 'paged' => $paged ) ); ?>
-						<?php get_template_part( 'loop', 'ad_listing' ); ?>
+							<?php query_posts( array( 'post_type' => APP_POST_TYPE, 'author' => $curauth->ID, 'paged' => $paged ) ); ?>
+							<?php get_template_part( 'loop', 'ad_listing' ); ?>
 					</div><!-- /block1 -->
 				</div><!-- /tabcontrol -->
+				<?php endif; ?>				
 			</div><!-- /content_left -->
-			<?php get_sidebar( 'author' ); ?>
+			<?php if( cpc_is_featured_description( $curauth->ID ) ) :?>
+				<?php get_sidebar( 'author' ); ?>
+			<?php endif; ?>
 			<div class="clr"></div>
 		</div><!-- /content_res -->
 	</div><!-- /content_botbg -->
