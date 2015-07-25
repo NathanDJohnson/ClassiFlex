@@ -494,6 +494,11 @@ div#main-pic a img{
     margin-left: -20px;
 }
 
+/* purchase membership table */
+.footable-visible {
+    max-width: 220px;
+}
+
 /**
 	Media queries
 **/

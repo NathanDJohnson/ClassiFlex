@@ -31,6 +31,7 @@
 									</thead>
 								<?php
 									if ( $packages ) {
+										usort($packages, "fmp_cmpDescA");
 								?>
 										<tbody id="list">
 										<?php
@@ -51,7 +52,15 @@
 													<td><strong><?php echo $package->pack_name; ?></strong></td>
 													<td><?php echo $package->description; ?></td>
 													<td><?php printf( __( '%1$s / %2$s days', APP_TD ), appthemes_get_price( $package->price ), $package->duration ); ?></td>
-													<td><input type="submit" name="step1" id="step1" class="btn_orange" onclick="document.getElementById('pack').value=<?php echo $package->ID; ?>;" value="<?php echo esc_attr_e( 'Buy Now &rsaquo;&rsaquo;', APP_TD ); ?>" style="margin-left: 5px; margin-bottom: 5px;" /></td>
+													<?php
+														if( $package->price == 0 ){
+															$paynow = "Free";
+														}
+														else{
+															$paynow = "Pay Now";
+														}
+													?>
+													<td><input type="submit" name="step1" id="step1" class="btn_orange" onclick="document.getElementById('pack').value=<?php echo $package->ID; ?>;" value="<?php echo $paynow; ?>" style="margin-left: 5px; margin-bottom: 5px;" /></td>
 												</tr>
 										<?php
 											} // end for each
@@ -78,3 +87,14 @@
 		</div><!-- /content_res -->
 	</div><!-- /content_botbg -->
 </div><!-- /content -->
+<?php
+/**
+ * function sorts array of objects by obj->price in descending order
+ */
+function fmp_cmpDescA($m, $n) {
+   if ($m->price == $n->price) {
+       return 0;
+   }
+   return ($m->price > $n->price) ? -1 : 1;
+}
+?>
