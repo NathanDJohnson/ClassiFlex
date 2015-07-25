@@ -105,7 +105,8 @@ body.page-id-50 #search-bar {
 /* search form */
 #searchform-params {
   overflow: hidden;
-  /*max-width: 695px;*/
+  display: inline-block;
+  float: left;
 }
 .TextField,
 .DropDownField {
@@ -115,10 +116,10 @@ body.page-id-50 #search-bar {
   max-width: 225px;
 }
 #search-bar .searchform-controls {
-  display: block;
-  overflow: hidden;
-  float: left;
-  margin: 0;
+    display: inline-block;
+    overflow: hidden;
+    margin-top: 35px;
+}
 }
 .searchform-label {
   width: 100% !important;
@@ -130,8 +131,8 @@ body.page-id-50 #search-bar {
 
 .advanced-search-link {
   display: block;
-  float: left;
-  margin-left: 20px;
+  float: right;
+  margin-right: 20px;
 }
 .advanced-search-link a {
   margin: auto;
