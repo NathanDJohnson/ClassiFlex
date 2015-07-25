@@ -35,6 +35,27 @@ $author_posts_count = count_user_posts( $curauth->ID );
 									<?php if ( ! empty( $curauth->facebook_id ) ) { ?><li><div class="facebookico"></div><a href="<?php echo appthemes_make_fb_profile_url( $curauth->facebook_id ); ?>" target="_blank"><?php _e( 'Facebook', APP_TD ); ?></a></li><?php } ?>
 								</ul>
 								<?php cp_author_info( 'page' ); ?>
+<?php if( $phone = get_user_meta( $curauth->ID, 'user_phone_number', true ) ) : ?>
+<ul class="author-main" style="padding:0; min-height:0;">
+<li class="author-user_phone_number" style="list-style-type:none;"><strong class="title-user_phone_number"><?php _e( 'Phone:', APP_TD ); ?></strong> <div style="width:289px;clear:both;display:inline;" class="" id="phone-all" data-last="<?php echo substr($phone,-4);?>"><?php echo substr($phone,0,-4); ?><span id="phone-last" style="cursor:pointer;background-color:aliceblue;">XXXX</span></div></li>
+</ul>
+<!--
+		<li>
+			<label><?php _e( 'Phone:', APP_TD ); ?></label>
+			<div style="width:289px;clear:both;" class="text" id="phone-all" data-last="<?php echo substr($phone,-4);?>"><?php echo substr($phone,0,-4); ?><span id="phone-last" style="cursor:pointer;background-color:aliceblue;">XXXX</span></div>
+			<div class="clr"></div>
+		</li>
+-->
+<script>
+(function($) {
+	$('#phone-all').click(function() {
+	    $('#phone-last').text( $(this).data('last') );
+	    $("#phone-last").css({ 'cursor': "initial" });
+	    $("#phone-last").css({ 'background-color': "initial" });
+	});
+})(jQuery);
+</script>
+<?php endif ?>
 							</div>
 							<h3 class="dotted"><?php _e( 'Description', APP_TD ); ?></h3>
 							<p><?php echo nl2br( $curauth->user_description ); ?></p>
