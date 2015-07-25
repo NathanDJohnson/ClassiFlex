@@ -59,6 +59,7 @@ img.no-shadow {
     box-shadow: none;
     border: none;
     padding: 0;
+    background: transparent;
 }
 img.maxwidth{
 	max-width: 100%;
