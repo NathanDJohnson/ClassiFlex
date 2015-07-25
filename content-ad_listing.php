@@ -8,7 +8,7 @@
  */
 global $cp_options;
 ?>
-<div class="post-wrapper <?php echo cpc_author_membership_style( get_the_author_meta('ID') ); ?>">
+<div class="post-wrapper <?php if( !is_author() ) { echo cpc_author_membership_style( get_the_author_meta('ID') ); } ?>">
 	<div class="post-image">
 	<?php if ( $cp_options->ad_images && ( cpc_is_featured_description( get_the_author_meta('ID') ) ) || is_sticky() ){
 				cp_ad_loop_thumbnail();
