@@ -15,7 +15,7 @@
 		<div class="content_res">
 				<div class="featured-listings control-width">
 					<div class="featured-inner">
-						<h3>Featured Listings</h3>
+						<h2>Featured Listings</h2>
 					</div>
 				</div>
 			<?php if( function_exists( 'cpflex_flexslider_slider' ) ) {

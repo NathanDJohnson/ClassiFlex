@@ -471,11 +471,16 @@ function classiflex_customize_css() {
 							'quinary_accent',
 							'septenary_accent'
 						);
+			// Make sure there's not more colors than featured types
 			if(count($colors) > count($featured)){ $colors = array_slice($colors, 0, count($featured)); }
-			if(count($featured) > count($colors)){ $featured = array_slice($featured, 0, count($colors)); }
-			$fun = array_combine( $colors, $featured );
 			
-			foreach( $fun as $k => $f ){ ?>
+			// Make sure there's not more featured types than colors
+			if(count($featured) > count($colors)){ $featured = array_slice($featured, 0, count($colors)); }
+			
+			// Combine the arrays
+			$combined = array_combine( $colors, $featured );
+			
+			foreach( $combined as $k => $f ){ ?>
 				.<?php echo strtolower( str_replace(' ','-', esc_html($f) ) ); ?> { background-color: <?php echo esc_html( $options[$k] ); ?>; }
 			<?php
 			}
@@ -495,13 +500,12 @@ function classiflex_customize_css() {
 			h2,h4,h6 {color:<?php echo esc_html( $options[secondary_color] ); ?>;}
 			.header_menu { background-color: <?php echo esc_html( $options[secondary_color] ); ?>;}
 			.footer { border-top: 2px solid <?php echo esc_html( $options[secondary_color] ); ?>;}
-			.colour, span.colour, a, .header_top_res p a { color: <?php echo esc_html( $options[secondary_color] ); ?>; }
+			.colour, span.colour, a { color: <?php echo esc_html( $options[secondary_color] ); ?>; }
 		<?php endif; ?>
 	<?php /* Tertiary color */ ?>
 		<?php if ( $options[tertiary_color] ) : ?>
-		 footer{ 
-		 	background-color: <?php echo esc_html( $options[tertiary_color] ); ?>;
-		 }
+		 footer{ background-color: <?php echo esc_html( $options[tertiary_color] ); ?>; }
+		 .header_top_res p a { color: <?php echo esc_html( $options[tertiary_color] ); ?>; }
 		<?php endif; ?>
 	<?php /* Quaternary color */ ?>
 		<?php if ( $options[quaternary_color] ) : ?>
@@ -510,10 +514,10 @@ function classiflex_customize_css() {
 
 	<?php /**** Accent colors ****/ ?>
 	<?php /* Primary accent */ ?>
-		<?php if ( $options[tertiary_accent] ) : ?>
+		<?php if ( $options[primary_accent] ) : ?>
 		<?php endif; ?>
 	<?php /* Secondary accent */ ?>
-		<?php if ( $options[tertiary_accent] ) : ?>
+		<?php if ( $options[secondary_accent] ) : ?>
 		<?php endif; ?>
 	<?php /* Tertiary accent */ ?>
 		<?php if ( $options[tertiary_accent] ) : ?>
