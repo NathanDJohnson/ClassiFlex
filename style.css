@@ -109,7 +109,8 @@ body.page-id-50 #search-bar {
   float: left;
 }
 .TextField,
-.DropDownField {
+.DropDownField,
+.SliderPrice {
   overflow: hidden;
   display: block;
   float: left;
@@ -318,6 +319,18 @@ body.page-id-50 #search-bar {
   background: #fff;
 }
 
+.page-id-50 .TextField,
+.page-id-50 .SliderPrice,
+.page-id-50 .DropDownField,
+.page-id-50 .searchform-input-wrapper {
+	clear: both;
+}
+
+.SliderPrice .searchform-input-wrapper {
+    padding: 0 10px;
+}
+
+
 #searchform .searchbutcat {
   float: left;
 }
@@ -327,7 +340,8 @@ body.page-id-50 #search-bar {
 			margin: 0 10px;
 		}
 		.TextField,
-		.DropDownField {
+		.DropDownField,
+		.SliderPrice {
 			float: left;
 			margin-left: 10px;
 		}
@@ -523,7 +537,8 @@ div#main-pic a img{
 	}
 	/* search fields */
 	.TextField,
-	.DropDownField {
+	.DropDownField,
+	.SliderPrice {
 		display: block;
 		clear: both;
 	}
