@@ -82,11 +82,6 @@ img.maxwidth{
 	max-width: 100%;
 }
 
-/* hide rss icon */
-.header_top_res p a.srvicon {
-    display: none;
-}
-
 /* don't display default search bar on advanced search page */
 body.page-id-50 #search-bar {
   display: none;
