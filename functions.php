@@ -176,7 +176,7 @@ function cpc_hr_shortcode( $atts ){
 	), $atts );
 	ob_start();
 	?>
-		<img src="<?php echo get_stylesheet_directory_uri();?>/images/DottedRule.png" alt="Icon_CheckMark" class="no-shadow maxwidth">
+		<img src="<?php echo get_stylesheet_directory_uri();?>/images/DottedRule.png" alt="Icon_CheckMark" class="no-shadow maxwidth cpc-hr">
 	<?php
 	return apply_filters( 'cpc_hr_shortcode_html', ob_get_clean() );
 }

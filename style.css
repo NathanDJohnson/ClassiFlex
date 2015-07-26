@@ -34,6 +34,10 @@ a:hover,
 p:empty {
 	display: none;
 }
+h1, h2, h3, h4, h5 { 
+	padding:10px 0; 
+	margin: 0;
+}
 h1 {
     font-size: 2em;
 }
@@ -531,6 +535,9 @@ div#main-pic a img{
     max-width: 220px;
 }
 
+/**/
+.stepimg{ padding:24px 0 12px;}
+
 /**
 	Tooltips
 **/
@@ -595,6 +602,10 @@ ul.biz li:first-child {
 }
 ul.biz li:last-child {
 	padding-bottom: 10px;
+}
+
+.cpc-hr {
+	padding: 10px auto;
 }
 
 /**
