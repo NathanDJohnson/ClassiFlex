@@ -40,13 +40,6 @@ $cpuser = cp_get_user_membership_package(3);
 		<div class="header_top_res">
 			<p>
 				<?php echo cp_login_head(); ?>
-				<a href="<?php echo appthemes_get_feed_url(); ?>" class="srvicon rss-icon" target="_blank" title="<?php _e( 'RSS Feed', APP_TD ); ?>"><?php _e( 'RSS Feed', APP_TD ); ?></a>
-				<?php if ( $cp_options->facebook_id ) { ?>
-					&nbsp;|&nbsp;<a href="<?php echo appthemes_make_fb_profile_url( $cp_options->facebook_id ); ?>" class="srvicon facebook-icon" target="_blank" title="<?php _e( 'Facebook', APP_TD ); ?>"><?php _e( 'Facebook', APP_TD ); ?></a>
-				<?php } ?>
-				<?php if ( $cp_options->twitter_username ) { ?>
-					&nbsp;|&nbsp;<a href="http://twitter.com/<?php echo $cp_options->twitter_username; ?>" class="srvicon twitter-icon" target="_blank" title="<?php _e( 'Twitter', APP_TD ); ?>"><?php _e( 'Twitter', APP_TD ); ?></a>
-				<?php } ?>
 			</p>
 		</div><!-- /header_top_res -->
 	</div><!-- /header_top -->
