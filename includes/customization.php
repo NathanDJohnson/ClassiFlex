@@ -515,11 +515,11 @@ function classiflex_customize_css() {
 	<?php /**** Accent colors ****/ ?>
 	<?php /* Primary accent */ ?>
 		<?php if ( $options[primary_accent] ) : ?>
-		.pending_moderation{	<?php echo esc_html( $options[primary_accent] ); ?>; }
+		.pending_moderation,.pending_payment {	background-color: <?php echo esc_html( $options[primary_accent] ); ?>; }
 		<?php endif; ?>
 	<?php /* Secondary accent */ ?>
 		<?php if ( $options[secondary_accent] ) : ?>
-		.ended{ <?php echo esc_html( $options[secondary_accent] ); ?>; }
+		.ended{ background-color: <?php echo esc_html( $options[secondary_accent] ); ?>; }
 		<?php endif; ?>
 	<?php /* Tertiary accent */ ?>
 		<?php if ( $options[tertiary_accent] ) : ?>
