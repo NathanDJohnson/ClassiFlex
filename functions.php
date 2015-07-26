@@ -13,49 +13,49 @@ add_theme_support( 'post-thumbnails' );
  * Register footer widgets
  */
 register_sidebar( array(
-'name' => 'Featured Broker Sidebar',
-'id' => 'featured-broker-sidebar',
-'description' => 'Appears in the header area',
-'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-'after_widget' => '</aside>',
-'before_title' => '<h3 class="widget-title">',
-'after_title' => '</h3>',
+	'name' => 'Featured Broker Sidebar',
+	'id' => 'featured-broker-sidebar',
+	'description' => 'Appears in the header area',
+	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+	'after_widget' => '</aside>',
+	'before_title' => '<h3 class="widget-title">',
+	'after_title' => '</h3>',
 ) );
 register_sidebar( array(
-'name' => 'Footer Sidebar 1',
-'id' => 'footer-sidebar-1',
-'description' => 'Appears in the footer area',
-'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-'after_widget' => '</aside>',
-'before_title' => '<h3 class="widget-title">',
-'after_title' => '</h3>',
+	'name' => 'Footer Sidebar 1',
+	'id' => 'footer-sidebar-1',
+	'description' => 'Appears in the footer area',
+	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+	'after_widget' => '</aside>',
+	'before_title' => '<h3 class="widget-title">',
+	'after_title' => '</h3>',
 ) );
 register_sidebar( array(
-'name' => 'Footer Sidebar 2',
-'id' => 'footer-sidebar-2',
-'description' => 'Appears in the footer area',
-'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-'after_widget' => '</aside>',
-'before_title' => '<h3 class="widget-title">',
-'after_title' => '</h3>',
+	'name' => 'Footer Sidebar 2',
+	'id' => 'footer-sidebar-2',
+	'description' => 'Appears in the footer area',
+	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+	'after_widget' => '</aside>',
+	'before_title' => '<h3 class="widget-title">',
+	'after_title' => '</h3>',
 ) );
 register_sidebar( array(
-'name' => 'Footer Sidebar 3',
-'id' => 'footer-sidebar-3',
-'description' => 'Appears in the footer area',
-'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-'after_widget' => '</aside>',
-'before_title' => '<h3 class="widget-title">',
-'after_title' => '</h3>',
+	'name' => 'Footer Sidebar 3',
+	'id' => 'footer-sidebar-3',
+	'description' => 'Appears in the footer area',
+	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+	'after_widget' => '</aside>',
+	'before_title' => '<h3 class="widget-title">',
+	'after_title' => '</h3>',
 ) );
 register_sidebar( array(
-'name' => 'Footer Sidebar 4',
-'id' => 'footer-sidebar-4',
-'description' => 'Appears in the footer area',
-'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-'after_widget' => '</aside>',
-'before_title' => '<h3 class="widget-title">',
-'after_title' => '</h3>',
+	'name' => 'Footer Sidebar 4',
+	'id' => 'footer-sidebar-4',
+	'description' => 'Appears in the footer area',
+	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+	'after_widget' => '</aside>',
+	'before_title' => '<h3 class="widget-title">',
+	'after_title' => '</h3>',
 ) );
 
 /**
@@ -69,7 +69,6 @@ add_action( 'init', 'register_mega_menu' );
 /**
  * Setup Featured Ads template
  */
-
 function child_setup_featured_ads_template() {
 	require_once dirname( __FILE__ ) . '/includes/child-views.php';
 	new Child_Featured_Ads_Home;
@@ -79,7 +78,6 @@ add_action( 'appthemes_init', 'child_setup_featured_ads_template' );
 /**
  * Assign Featured Ads template to front page
  */
-
 function child_assign_templates_on_activation() {
 	update_option( 'show_on_front', 'page' );
 	update_option( 'page_on_front', Child_Featured_Ads_Home::get_id() );
@@ -90,7 +88,6 @@ add_action( 'appthemes_first_run', 'child_assign_templates_on_activation' );
 /**
  * Enqueue Parent theme CSS before child themes
  */
-
 function cannabiz_enqueue_parent_style() {
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 }
@@ -126,13 +123,11 @@ add_action( 'after_setup_theme', 'my_remove_feeds' );
 function customize_register_init( $wp_customize ){
     $wp_customize->remove_section('colors');
 }
-
 add_action( 'customize_register', 'customize_register_init' );
 
 /**
  * Function mostly copied from ClassiPress core theme
  * Modified for listings without images
- * And (in future ) to not display images for non-broker level members
  */
 function cp_ad_loop_thumbnail() {
 	global $post, $cp_options;
@@ -169,6 +164,9 @@ function cp_ad_loop_thumbnail() {
 	}
 }
 
+/**
+ * Shortcode that displays a custom dotted rule
+ */
 function cpc_hr_shortcode( $atts ){
 	$a = shortcode_atts( array(
 		'url' => '',
@@ -182,6 +180,9 @@ function cpc_hr_shortcode( $atts ){
 }
 add_shortcode( 'cpc-hr', 'cpc_hr_shortcode' );
 
+/**
+ * Shortcode that displays a CSS styled button
+ */
 function cpc_button_shortcode( $atts ) {
 	$a = shortcode_atts( array(
 		'url' => '',
@@ -195,7 +196,9 @@ function cpc_button_shortcode( $atts ) {
 }
 add_shortcode( 'cpc-button', 'cpc_button_shortcode' );
 
-
+/**
+ * Helper function to get the membership packs
+ */
 function cpc_get_membership_packs() {
 
 	$args = array(
@@ -214,7 +217,7 @@ function cpc_get_membership_packs() {
 }
 
 /**
- * Sorting function
+ * Function that sorts the ads by membership type (if option set)
  */
 function cpc_sort_ads_by_membership( $ads ) {
 
@@ -307,7 +310,7 @@ function cpc_author_membership_pack( $userID ) {
 }
 
 /**
- *
+ * If option set, restrict ads from displaying more than a certain number of images
  */
 function cpc_allowed_imaged_by_membership( $membership_pack ){
 	$options = get_option('classiflex_theme_options');
@@ -338,6 +341,7 @@ add_filter( 'query_vars', 'cpc_add_query_vars_filter' );
 /**
  * Doesn't work - so deprecated I guess
  */
+/*
 function cpc_get_ads() {
 
   $vars["search-class"] = get_query_var( "search-class" );
@@ -377,6 +381,7 @@ function cpc_initial_caps( $string ){
 
 	return $string;
 }
+*/
 
 /* inital caps for <title> */
 function cpc_wp_title( $title, $sep ) {
@@ -384,21 +389,24 @@ function cpc_wp_title( $title, $sep ) {
 }
 add_filter( 'wp_title', 'cpc_wp_title', 10, 2 );
 
+/**
+ * Helper function get_the_slug() - self-explanatory
+ */
 if(!function_exists('get_the_slug')){
-function get_the_slug( $id=null ){
-  if( empty($id) ):
-    global $post;
-    if( empty($post) )
-      return ''; // No global $post var available.
-    $id = $post->ID;
-  endif;
+	function get_the_slug( $id=null ){
+		if( empty($id) ):
+			global $post;
+			if( empty($post) ) {	return ''; } // No global $post var available.
+			$id = $post->ID;
+		endif;
 
-  $slug = basename( get_permalink($id) );
-  return $slug;
+		$slug = basename( get_permalink($id) );
+		return $slug;
+	}
 }
-}
-
-/* author slug */
+/**
+ * Helper function to get the author slug
+ */
 function cpc_author_slug(){
 	return $GLOBALS['wp_rewrite']->author_base;
 }
