@@ -371,7 +371,12 @@ function cpc_get_ads() {
 	}
 	return cpc_sort_ads_by_membership( $ads );
 }
+*/
 
+/**
+ * Return a string with the first letter of each word uppercase
+ * and the other letter lowercase
+*/
 function cpc_initial_caps( $string ){
 	$string = ucwords( strtolower( $string ) );
 
@@ -381,9 +386,10 @@ function cpc_initial_caps( $string ){
 
 	return $string;
 }
-*/
 
-/* inital caps for <title> */
+/**
+ * inital caps for <title>
+*/
 function cpc_wp_title( $title, $sep ) {
 	return cpc_initial_caps( trim( $title ) );
 }
