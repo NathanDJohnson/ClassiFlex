@@ -58,6 +58,11 @@ h5 {
 	background-color: #efefef;
 }
 
+/** Don't display the WordPress admin bar **/
+#wpadminbar {
+	display:none
+}
+
 /* hide link on /listing-types/ page */
 .page-id-91 a.obtn.btn_orange {
     display: none;
@@ -525,6 +530,11 @@ div#main-pic a img{
     margin-left: -20px;
 }
 
+/* #featured-slider */
+#featured-slider {
+	padding-top: 10px;
+}
+
 /* purchase membership table */
 .footable-visible {
     max-width: 220px;
@@ -603,6 +613,14 @@ ul.biz li:last-child {
 	padding: 10px auto;
 }
 
+.footable-row-detail-value {
+    padding-left: 3px;
+}
+.footable-row-detail-value,
+.footable-row-detail-name {
+    display: table-cell;
+}
+
 /**
 	Media queries
 **/
@@ -616,6 +634,10 @@ ul.biz li:last-child {
 	}
 	.post-image img.no-image{
 		display: none;
+	}
+	/* search listing description */
+	.post-content{
+		padding: 0 10px;
 	}
 	/* full width */
 	#search-bar,
