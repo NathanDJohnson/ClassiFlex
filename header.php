@@ -11,30 +11,6 @@ global $cp_options;
 
 define('CP_ADD_NEW_URL_INT','/listing-types/'); /* new line */
 ?>
-
-<?php
-
-$cpuser = cp_get_user_membership_package(2);
-//var_dump( $cpuser );
-$cpuser = cp_get_user_membership_package(3);
-//var_dump( $cpuser );
-
-
-/**
- * custom post types:
- *
- * post
- * page
- * attachment
- * revision
- * nav_menu_item
- * ad_listing
- * package-listing
- * package-membership
- * transaction
- */
-?>
-
 <div class="header">
 	<div class="header_top">
 		<div class="header_top_res">
