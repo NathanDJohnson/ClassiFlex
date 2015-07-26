@@ -9,7 +9,7 @@
 
 global $cp_options;
 
-define('CP_ADD_NEW_URL_INT','/listing-types/'); /* new line */
+define('CP_ADD_NEW_URL_INT','/sell/');
 ?>
 <div class="header">
 	<div class="header_top">
