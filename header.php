@@ -25,11 +25,17 @@ $options = get_option('classiflex_theme_options');
 			<div class="header_main_res">
 				<div id="logo">
 					<?php if ( get_header_image() ) : ?>
-						<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-							<img src="<?php header_image(); ?>" class="header-logo" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" />
-						</a>
+						<div class="float-left">
+							<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+								<img src="<?php header_image(); ?>" class="header-logo" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" />
+							</a>
+						</div>
 						<?php if( $options[homepage_image] ) : ?>
-						<img src="<?php echo esc_html( $options[homepage_image] ); ?>" class="header-logo" alt="">
+						<div class="float-right">
+							<a class="site-logo" href="http://buysellcannabiz.com/">
+								<img src="<?php echo esc_html( $options[homepage_image] ); ?>" class="header-logo" alt="">
+							</a>
+						</div>
 						<?php endif; ?>
 					<?php elseif ( display_header_text() ) :?>
 						<h1 class="site-title">
