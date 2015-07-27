@@ -37,7 +37,6 @@
 			<!-- left block -->  
 			<div class="content_left">
 				<div class="recent-listings">
-					<img src="<?php if ( $options[homepage_image] ){ echo $options[homepage_image]; } ?>" style="max-width:100%; height:auto;">
 					<p><?php if ( $options[homepage_text] ){ echo esc_html( $options[homepage_text] ); } ?></p>
 					<?php if ( is_active_sidebar( 'featured-broker-sidebar' ) ) : ?>
 						<div id="featured-broker-sidebar" class="header-sidebar widget-area" role="complementary">

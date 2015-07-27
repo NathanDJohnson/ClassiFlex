@@ -10,6 +10,7 @@
 global $cp_options;
 
 define('CP_ADD_NEW_URL_INT','/sell/');
+$options = get_option('classiflex_theme_options');
 ?>
 <div class="header">
 	<div class="header_top">
@@ -23,17 +24,20 @@ define('CP_ADD_NEW_URL_INT','/sell/');
 		<div class="header_main_bg">
 			<div class="header_main_res">
 				<div id="logo">
-					<?php if ( get_header_image() ) { ?>
+					<?php if ( get_header_image() ) : ?>
 						<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 							<img src="<?php header_image(); ?>" class="header-logo" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" />
 						</a>
-					<?php } elseif ( display_header_text() ) { ?>
+						<?php if( $options[homepage_image] ) : ?>
+						<img src="<?php echo esc_html( $options[homepage_image] ); ?>" class="header-logo" alt="">
+						<?php endif; ?>
+					<?php elseif ( display_header_text() ) :?>
 						<h1 class="site-title">
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 								<?php bloginfo( 'name' ); ?>
 							</a>
 						</h1>
-					<?php } ?>
+					<?php endif; ?>
 					<?php if ( display_header_text() ) { ?>
 						<div class="description"><?php bloginfo( 'description' ); ?></div>
 					<?php } ?>
