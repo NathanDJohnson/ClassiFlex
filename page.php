@@ -7,6 +7,7 @@
  * @since   ClassiPress 1.0
  */
 ?>
+<div class="clr" style="margin-top:10px;"></div>
 <div class="content">
 	<div class="content_botbg">
 		<div class="content_res">
