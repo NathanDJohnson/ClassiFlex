@@ -14,5 +14,6 @@
 	}
 </style>
 <?php endif; ?>
+<div class="clr" style="margin-top:10px;"></div>
 <?php
 appthemes_display_checkout();
