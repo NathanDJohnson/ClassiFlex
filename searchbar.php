@@ -11,8 +11,12 @@
 	// Don't display the searchbar on certain pages
 	if( is_page('listing-types') 
 		|| is_page('create-listing') 
+		|| is_page('register') 
+		|| is_page('login') 
+		|| is_page('purchase-membership') 
 		|| is_page('become-a-broker') 
 		|| is_page('find-a-cannabiz-broker') 
+		|| is_page('sell') 
 		|| 'find-a-cannabiz-broker' == get_the_slug( $post->post_parent ) ) {
 			return;
 	}
