@@ -557,7 +557,7 @@ function classiflex_customize_css() {
 			   text-shadow: rgba(0,0,0,.4) 0 1px 0;
 			   color: white;
 			   font-size: 15px;
-			   font-family: Helvetica, Arial, Sans-Serif;
+			   font-family: 'myriad';
 			   text-decoration: none;
 			   vertical-align: middle;
 		   }
