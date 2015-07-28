@@ -75,6 +75,11 @@ h5 {
 	display: block;
 	float: right;
 }
+
+.page-template-create-listing li#list_featured_ad {
+    display: none;
+}
+
 /* hide link on /listing-types/ page */
 .page-id-91 a.obtn.btn_orange {
     display: none;
