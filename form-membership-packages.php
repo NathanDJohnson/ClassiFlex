@@ -7,6 +7,7 @@
  * @since   ClassiPress 3.4
  */
 ?>
+<div class="clr" style="margin-top:10px;"></div>
 <div class="content">
 	<div class="content_botbg">
 		<div class="content_res">
@@ -25,7 +26,7 @@
 										<tr>
 											<th scope="col" data-class="expand"><?php _e( 'Name', APP_TD ); ?></th>
 											<th scope="col" data-hide="phone"><?php _e( 'Membership Benefit', APP_TD ); ?></th>
-											<th scope="col" data-hide="phone"><?php _e( 'Subscription', APP_TD ); ?></th>
+											<th scope="col" data-hide="phone"><?php _e( 'Price', APP_TD ); ?></th>
 											<th scope="col" style="width:75px;" data-hide="phone"></th>
 										</tr>
 									</thead>
@@ -51,7 +52,18 @@
 												<tr class="<?php echo $rowclass . ' ' . $requiredClass; ?>">
 													<td><strong><?php echo $package->pack_name; ?></strong></td>
 													<td><?php echo $package->description; ?></td>
-													<td><?php printf( __( '%1$s / %2$s days', APP_TD ), appthemes_get_price( $package->price ), $package->duration ); ?></td>
+													<?php
+														$price = $package->price;
+														if( 0 == $price ){
+															$price = '—';
+														}
+														else{
+															$d = appthemes_get_price( $price );
+															setlocale(LC_MONETARY, 'en_US.UTF-8');
+															$price = money_format('%.2n', $price);
+														}
+													?>
+													<td class="membership-price <?php if( 0 == $price ){ echo 'membership-zero'; } ?>"><?php echo esc_html( $price ); ?></td>
 													<?php
 														if( $package->price == 0 ){
 															$paynow = "Free";

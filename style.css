@@ -355,7 +355,16 @@ img.maxwidth{
 	background-color: #fff;
 }
 
+/* --- Membership packages --- */
+.membership-price {
+	text-align: right;
+}
+.membership-zero{
+	text-align: center;
+}
+
 /* --- Footer --- */
+text-align: center; 
 .footer {
 	margin-top: -2px;
 	padding: 10px;
