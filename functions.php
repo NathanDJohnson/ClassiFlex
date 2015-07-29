@@ -416,3 +416,27 @@ if(!function_exists('get_the_slug')){
 function cpc_author_slug(){
 	return $GLOBALS['wp_rewrite']->author_base;
 }
+
+/**
+ * Function that modifies the ad packages based on the user's membership pack
+ * NOTE: This required a hack to the core ClassiPress theme
+ * See: http://forums.appthemes.com/report-classipress-bugs/includes-custom_forms-php-88906/
+ */
+function cp_modify_ad_packs( $package ) {
+	if( cpc_is_featured_description( get_current_user_id() ) ){
+		if( $package->pack_name == 'Yearly' || $package->pack_name == 'Featured Yearly' || $package->pack_name == 'Monthly' || $package->pack_name == 'Featured Monthly' ) {
+			$package->ID = false;
+			$package->pack_name = false;
+			$package = false;
+		}
+	}
+	else{
+		if( $package->pack_name == 'Broker' || $package->pack_name == 'Featured Broker' ) {
+			$package->ID = false;
+			$package->pack_name = false;
+			$package = false;
+		}
+	}
+	return $package;
+}
+add_filter( 'cp_package_field', 'cp_modify_ad_packs');
