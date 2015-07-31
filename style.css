@@ -192,13 +192,18 @@ img.maxwidth{
 /* --- Loop Ad Listings --- */
 				
 /* --- Search bar --- */
+
 #search-bar{
 	overflow: hidden;
 	background: #fff;
 	border-radius: 0 0 6px 6px;
 	border: 1px solid #ccc;
-	padding-bottom: 10px;
+	/* padding-bottom: 10px; */
 	margin-bottom: 10px;
+}
+.searchblock_out{
+	border: none;
+	margin: 0;
 }
 #rb_advcdsrch {
 	width: initial !important;
@@ -234,6 +239,11 @@ img.maxwidth{
 #total_value {
 	display: none !important;
 }
+
+a.selectBox.searchbar.selectBox-dropdown{
+	min-width: 205px;
+}
+
 .advanced-search-link {
 	display: block;
 	float: right;
@@ -405,7 +415,6 @@ text-align: center;
 	clear: both;
 	border: 0;
 	padding: 10px 20px 20px 20px;
-	margin: -20px;
 	background: black;
 }
 #bottom-footer-sidebar ul {
