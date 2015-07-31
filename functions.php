@@ -219,8 +219,17 @@ function cpc_get_membership_packs() {
 /**
  * Function that sorts the ads by membership type (if option set)
  */
-function cpc_sort_ads_by_membership( $ads ) {
+add_action('wp', 'cpc_sort_ads_by_membership');
+function cpc_sort_ads_by_membership( ) {
+	// No need to sort by membership on author page
+	if( is_author() ) { return; }
 
+	global $wp_query;
+	$ads = $wp_query;
+	// Not sure how the ads are ordered
+	// But we want to randomize them
+	shuffle( $ads->posts );
+	
 	$options = get_option('classiflex_theme_options');
 	if( $options['search_by'] ){
 		$search_by = explode(',', str_replace(", ",",",esc_html($options['search_by'] ) ) );
@@ -251,14 +260,17 @@ function cpc_sort_ads_by_membership( $ads ) {
 		}
 		if( count( $result ) > 1 ){
 			foreach( $search_by as $sort ){
-				foreach ( $result[$sort] as $s ){
-					$newads[] = $s;
+				if( $result[$sort] ){
+					foreach ( $result[$sort] as $s ){
+						$newads[] = $s;
+					}
 				}
 			}
 			$ads->posts = $newads ; 
 		}
 	}
-	return $ads;
+	$wp_query->posts = $ads->posts;
+	return;
 }
 
 /**
