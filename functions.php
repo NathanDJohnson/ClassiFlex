@@ -149,18 +149,18 @@ function cp_ad_loop_thumbnail() {
 
 		// must be a v3.0.5+ created ad
 		if ( $adthumbarray ) {
-			echo '<a href="'. get_permalink() .'" title="'. the_title_attribute( 'echo=0' ) .'" class="'. $prevclass .'" data-rel="'. $img_large_url_raw .'">'. $adthumbarray .'</a>';
+			echo $adthumbarray;
 
 		// maybe a v3.0 legacy ad
 		} else {
 			$adthumblegarray = wp_get_attachment_image_src($image_id, 'thumbnail');
 			$img_thumbleg_url_raw = $adthumblegarray[0];
-			echo '<a href="'. get_permalink() .'" title="'. the_title_attribute( 'echo=0' ) .'" class="'. $prevclass .'" data-rel="'. $img_large_url_raw .'">'. $adthumblegarray .'</a>';
+			echo $adthumblegarray;
 		}
 
 	// no image so return the placeholder thumbnail
 	} else {
-		echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '"><img class="'. $prevclass .'" alt="no image" title="" src="' . appthemes_locate_template_uri( 'images/no-thumb-75.jpg' ) . '" /></a>';
+		echo '<img class="'. $prevclass .'" alt="no image" title="" src="' . appthemes_locate_template_uri( 'images/no-thumb-75.jpg' ) . '" />';
 	}
 }
 
