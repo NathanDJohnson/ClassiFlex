@@ -32,16 +32,11 @@
 									</thead>
 								<?php
 									if ( $packages ) {
-										//usort($packages, "fmp_cmpDescA");
+										usort($packages, "fmp_cmpDescA");
 								?>
 										<tbody id="list">
 										<?php
 											foreach ( $packages as $package ) {
-												// external plugins can modify or disable field
-												$package = apply_filters( 'cp_package_field', $package, 'membership' );
-												if ( ! $package ) {
-													continue;
-												}
 												$rowclass = 'even';
 												$requiredClass = '';
 												$benefit = cp_get_membership_package_benefit_text( $package->ID );
@@ -58,9 +53,11 @@
 															$price = '—';
 														}
 														else{
-															$d = appthemes_get_price( $price );
-															setlocale(LC_MONETARY, 'en_US.UTF-8');
-															$price = money_format('%.2n', $price);
+															if( function_exists( 'money_format' ) ){
+																$d = appthemes_get_price( $price );
+																setlocale(LC_MONETARY, 'en_US.UTF-8');
+																$price = money_format('%.2n', $price);
+															}
 														}
 													?>
 													<td class="membership-price <?php if( 0 == $price ){ echo 'membership-zero'; } ?>"><?php echo esc_html( $price ); ?></td>
@@ -81,7 +78,7 @@
 														case 'Featured Broker':
 															$paynow = "Select Featured";
 															break;
-														case 'Broker':
+														case 'Standard Broker':
 															$paynow = "Select Standard";
 															break;
 														default:
