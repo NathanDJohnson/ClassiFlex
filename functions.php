@@ -197,10 +197,23 @@ function cpc_button_shortcode( $atts ) {
 add_shortcode( 'cpc-button', 'cpc_button_shortcode' );
 
 /**
+ * Helper function to get the membership packs by post_title
+*/
+function cpc_get_membership_packs_by_post_title( ){
+	return cpc_get_membership_packs('post_title');
+}
+
+/**
+ * Helper function to get the membership packs by ID
+*/
+function cpc_get_membership_packs_by_ID( ){
+	return cpc_get_membership_packs( 'ID' );
+}
+
+/**
  * Helper function to get the membership packs
  */
-function cpc_get_membership_packs() {
-
+function cpc_get_membership_packs( $by = 'post_title') {	
 	$args = array(
 		'post_type' => array( 'package-membership' )
 	);
@@ -209,7 +222,26 @@ function cpc_get_membership_packs() {
 	if ( $testquery->have_posts() ) {
 		$packs = array();
 		foreach( $testquery->posts as $post ){
-            $packs[] = $post->post_title;
+            $packs[] = $post->$by;
+		}
+		return $packs;
+	}
+	return;
+}
+
+/**
+ * Helper function to get the ad packs
+ */
+function cpc_get_ad_packs( $by = 'post_title') {	
+	$args = array(
+		'post_type' => array( 'package-listing' )
+	);
+	$testquery = new WP_Query( $args );
+
+	if ( $testquery->have_posts() ) {
+		$packs = array();
+		foreach( $testquery->posts as $post ){
+            $packs[] = $post->$by;
 		}
 		return $packs;
 	}
@@ -226,9 +258,6 @@ function cpc_sort_ads_by_membership( ) {
 
 	global $wp_query;
 	$ads = $wp_query;
-	// Not sure how the ads are ordered
-	// But we want to randomize them
-	shuffle( $ads->posts );
 	
 	$options = get_option('classiflex_theme_options');
 	if( $options['search_by'] ){
@@ -244,8 +273,8 @@ function cpc_sort_ads_by_membership( ) {
 			$search_by[] = $pack;
 		}
 	}
-
-	$search_by[]=''; // include ads without memberships attached at the end
+	
+	$search_by[] = ''; // include ads without memberships attached at the end
 	
 	$result = array();
 	
@@ -313,6 +342,36 @@ function cpc_is_featured_description( $userID ){
 }
 
 /**
+ * Returns true if the ad pack includes an image
+ */
+function cpc_ad_has_image( $postID ){
+
+	$pack = cpc_ad_pack_used( $postID );
+	
+	// Hard code this for now, add option later
+	if( in_array( $pack, array( 'Yearly Upgrade' , 'Monthly Upgrade' ) ) ){
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Returns true if the user has a membership that includes an image
+ */
+function cpc_is_featured_image( $userID ){
+
+	$options = get_option('classiflex_theme_options');
+	if ( $options['featured_image'] ) {
+		$featured = explode(',', str_replace(", ",",",esc_html($options['featured_description'] ) ) );
+		
+		if( in_array( cpc_author_membership_pack( $userID ), $featured ) ){
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
  * Returns membership as a css style
  */
 function cpc_author_membership_style( $userID ){
@@ -351,6 +410,23 @@ function cpc_allowed_imaged_by_membership( $membership_pack ){
 		return max( 1, $options[$type] );
 	}
 	else return 0;
+}
+
+/**
+ * Does the membership pack include free listings
+ */
+function cpc_free_listings_with_membership( $pack ){
+	$options = get_option('classiflex_theme_options');
+	if ( $options['ads_included'] ) {
+		$featured = explode(',', str_replace(", ",",",esc_html($options['ads_included'] ) ) );
+		
+		foreach( $featured as $f ){
+			if( $f == $pack ) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 /**
@@ -454,15 +530,33 @@ function cpc_author_slug(){
  * See: http://forums.appthemes.com/report-classipress-bugs/includes-custom_forms-php-88906/
  */
 function cp_modify_ad_packs( $package ) {
-	if( cpc_is_featured_description( get_current_user_id() ) ){
-		if( $package->pack_name == 'Yearly' || $package->pack_name == 'Featured Yearly' || $package->pack_name == 'Monthly' || $package->pack_name == 'Featured Monthly' ) {
+	
+	// Check if a user has the free membership or not 
+	// and display ad packages accordingly
+	$pack = cpc_author_membership_pack( get_current_user_id() );
+	if( cpc_free_listings_with_membership( $pack ) ){
+		if( in_array( 
+				$package->pack_name,  array( 
+					'Yearly',
+					'Yearly Upgrade',
+					'Monthly',
+					'Monthly Upgrade'
+				)
+			)
+		){
 			$package->ID = false;
 			$package->pack_name = false;
 			$package = false;
 		}
 	}
 	else{
-		if( $package->pack_name == 'Broker' || $package->pack_name == 'Featured Broker' ) {
+		if( in_array( 
+				$package->pack_name,  array( 
+					'Broker',
+					'Featured Broker'
+				)
+			)
+		){
 			$package->ID = false;
 			$package->pack_name = false;
 			$package = false;
@@ -471,3 +565,33 @@ function cp_modify_ad_packs( $package ) {
 	return $package;
 }
 add_filter( 'cp_package_field', 'cp_modify_ad_packs');
+
+function cpc_ad_pack_used( $postID, $by = 'ID' ){
+	
+	if( $try = get_post_meta( $postID, 'cpc_sys_ad_pack', true ) ){
+		if( $by == 'name' ) { 
+			return get_the_title( $try );
+		}
+		return $try;
+	}
+	else{
+		$price = get_post_meta( $postID, 'cp_sys_ad_listing_fee', true );
+		$duration = get_post_meta( $postID, 'cp_sys_ad_duration', true );
+		
+		// loop through Ad Packs and see if $cost and $duration match ad packs
+		foreach( cpc_get_ad_packs('ID') as $pack ){
+			$pack_price = get_post_meta( $pack, 'price', true );
+			$pack_duration =  get_post_meta( $pack, 'duration', true );
+			
+			if( $pack_price == $price && $pack_duration == $duration ){
+				add_post_meta( $postID, 'cpc_sys_ad_pack', $pack );
+				if( $by == 'name' ) { 
+					return get_the_title( $pack );
+				}
+				return $pack;
+			}
+		}
+		// Nothing matched :(
+		return false;
+	}
+}

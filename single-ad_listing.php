@@ -44,7 +44,7 @@
 									<?php } ?>
 									</ul>
 								</div><!-- /bigright -->
-								<?php if ( $cp_options->ad_images && cpc_is_featured_description( get_the_author_meta('ID') ) || is_sticky() ) { ?>
+								<?php if ( $cp_options->ad_images && cpc_is_featured_description( get_the_author_meta('ID') ) || cpc_ad_has_image( get_the_ID() ) ) { ?>
 									<div class="bigleft">
 										<div id="main-pic">
 											<?php cp_get_image_url(); ?>

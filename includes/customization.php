@@ -91,6 +91,42 @@ function classiflex_customize_register($wp_customize) {
 			'type'           => 'text',
 		) )
 	); 
+// Who gets free ads included with membership
+	$wp_customize->add_setting( 'classiflex_theme_options[ads_included]', array(
+    'default'        => '',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+		$wp_customize,
+		'ads_included',
+		array(
+			'label'          => __( 'Ads Included in Membership', 'classiflex' ),
+			'section'        => 'classiflex_search_options',
+			'settings'       => 'classiflex_theme_options[ads_included]',
+			'type'           => 'text',
+		) )
+	); 
+// Who gets a featured image
+	$wp_customize->add_setting( 'classiflex_theme_options[featured_image]', array(
+    'default'        => '',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+		$wp_customize,
+		'featured_image',
+		array(
+			'label'          => __( 'Featured Image', 'classiflex' ),
+			'section'        => 'classiflex_search_options',
+			'settings'       => 'classiflex_theme_options[featured_image]',
+			'type'           => 'text',
+		) )
+	); 
 // Who gets a featured on the homepage
 	$wp_customize->add_setting( 'classiflex_theme_options[featured_ad]', array(
     'default'        => '',
@@ -113,7 +149,6 @@ function classiflex_customize_register($wp_customize) {
 /* ------------
  * Limit images by membership type
  * ------------ */
- /*
  	$wp_customize->add_section( 'classiflex_member_images', array(
 		'title'          => __( 'Membership Images', 'classiflex' ),
 		'description'    => __( 'Limit Images based on membership', 'classiflex' ),
@@ -151,7 +186,6 @@ function classiflex_customize_register($wp_customize) {
 			);
 		}
 	}
-*/
 
 /* ------------
  * Social Options

@@ -133,6 +133,11 @@ body.page-id-50 #search-bar {
 	display: none;
 }
 
+.order-summary .btn_orange {
+    clear: both;
+    display: block;
+}
+
 /* images some shipped with box-shadows */
 img.no-shadow {
 	box-shadow: none;

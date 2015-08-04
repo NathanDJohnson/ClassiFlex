@@ -16,7 +16,7 @@ global $cp_options;
 <?php endif; ?>
 	<a href="<?php echo the_permalink(); ?>" title="<?php echo cpc_initial_caps( get_the_title() ); ?>">
 		<div class="post-image">
-		<?php if ( $cp_options->ad_images && ( cpc_is_featured_description( get_the_author_meta('ID') ) ) || is_sticky() ){
+		<?php if ( $cp_options->ad_images && ( cpc_is_featured_image( get_the_author_meta('ID') ) || cpc_ad_has_image( get_the_ID() ) ) ){
 					cp_ad_loop_thumbnail();
 				}
 				else{ ?>
@@ -47,7 +47,7 @@ global $cp_options;
 				</p>
 				<?php appthemes_before_post_title(); // price tag?>
 			</div>
-			<?php if( cpc_is_featured_description( get_the_author_meta('ID') ) ) :?>
+			<?php if( cpc_free_listings_with_membership( cpc_author_membership_pack( get_the_author_meta('ID') ) ) ) :?>
 				<div class="membership-pack">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/<?php echo cpc_author_membership_style(get_the_author_meta('ID') ) ?>.png" alt="<?php echo cpc_author_membership_pack( get_the_author_meta('ID') ); ?>" >
 					<p class="membership-pack-meta"><em><?php echo cpc_author_membership_pack( get_the_author_meta('ID') ); ?></em></p>
