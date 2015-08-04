@@ -91,6 +91,25 @@ function classiflex_customize_register($wp_customize) {
 			'type'           => 'text',
 		) )
 	); 
+// Who gets a featured on the homepage
+	$wp_customize->add_setting( 'classiflex_theme_options[featured_ad]', array(
+    'default'        => '',
+    'type'           => 'option',
+    'capability'     => 'edit_theme_options',
+    'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+		$wp_customize,
+		'featured_ad',
+		array(
+			'label'          => __( 'Featured Homepage Ad', 'classiflex' ),
+			'section'        => 'classiflex_search_options',
+			'settings'       => 'classiflex_theme_options[featured_ad]',
+			'type'           => 'text',
+		) )
+	); 
+
 /* ------------
  * Limit images by membership type
  * ------------ */

@@ -274,6 +274,25 @@ function cpc_sort_ads_by_membership( ) {
 }
 
 /**
+ * Returns true if the user has a membership that is featured on the homepage
+ */
+function cpc_is_featured_ad( $userID ){
+	$options = get_option('classiflex_theme_options');
+	if ( $options['featured_ad'] ) {
+		$featured = explode(',', str_replace(", ",",",esc_html($options['featured_ad'] ) ) );
+		
+		$pack = cpc_author_membership_pack( $userID );
+
+		foreach( $featured as $f ){
+			if( $f == $pack ) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+/**
  * Returns true if the user has a membership that is featured
  */
 function cpc_is_featured_description( $userID ){
