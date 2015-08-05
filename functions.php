@@ -566,32 +566,136 @@ function cp_modify_ad_packs( $package ) {
 }
 add_filter( 'cp_package_field', 'cp_modify_ad_packs');
 
-function cpc_ad_pack_used( $postID, $by = 'ID' ){
-	
-	if( $try = get_post_meta( $postID, 'cpc_sys_ad_pack', true ) ){
-		if( $by == 'name' ) { 
-			return get_the_title( $try );
+/**
+ * Helper function to see if cpc_sys_ad_pack is defined
+ */
+function cpc_is_ad_pack_meta( $postID ){
+	if( !$postID ){
+		global $post;
+		if( !$post ){ 
+			return; 
 		}
-		return $try;
+		$postID = $post->ID;
+	}
+
+	if( get_post_meta( $postID, 'cpc_sys_ad_pack', true ) ){
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Checks the meta data to see if cpc_sys_ad_pack is defined
+ * If not, tries to guess the ad pack used
+ * Returns ad pack or false.
+ */
+function cpc_ad_pack_used( $postID, $by = 'ID' ){
+	if( !$postID ){
+		global $post;
+		if( !$post ){ 
+			return; 
+		}
+		$postID = $post->ID;
+	}
+	
+	if( $pack = get_post_meta( $postID, 'cpc_sys_ad_pack', true ) ){
+		if( $by == 'name' ) { 
+			return get_the_title( $pack );
+		}
+		return $pack;
 	}
 	else{
-		$price = get_post_meta( $postID, 'cp_sys_ad_listing_fee', true );
-		$duration = get_post_meta( $postID, 'cp_sys_ad_duration', true );
+		return cpc_guess_ad_pack( $postID, $by = 'ID' );
+	}
+	// Nothing matched :(
+	return false;
+}
+
+/**
+ * ClassiPress doesn't store the ad pack used in the custom post meta data
+ * This function attempts to guess the pack used based on the listing fee
+ * and ad duration.
+ *
+ * NOTE: If two ad packs have exactly the same fee and duration, it will not
+ * distinguish between the two and will return the one with higher priority.
+ */
+function cpc_guess_ad_pack( $postID, $by = 'ID' ){
+	if( !$postID ){
+		global $post;
+		if( !$post ){ 
+			return; 
+		}
+		$postID = $post->ID;
+	}
+
+	$price = get_post_meta( $postID, 'cp_sys_ad_listing_fee', true );
+	$duration = get_post_meta( $postID, 'cp_sys_ad_duration', true );
+	
+	// loop through Ad Packs and see if $cost and $duration match ad packs
+	foreach( cpc_get_ad_packs('ID') as $pack ){
+		$pack_price = get_post_meta( $pack, 'price', true );
+		$pack_duration =  get_post_meta( $pack, 'duration', true );
 		
-		// loop through Ad Packs and see if $cost and $duration match ad packs
-		foreach( cpc_get_ad_packs('ID') as $pack ){
-			$pack_price = get_post_meta( $pack, 'price', true );
-			$pack_duration =  get_post_meta( $pack, 'duration', true );
-			
-			if( $pack_price == $price && $pack_duration == $duration ){
-				add_post_meta( $postID, 'cpc_sys_ad_pack', $pack );
-				if( $by == 'name' ) { 
-					return get_the_title( $pack );
-				}
-				return $pack;
+		if( $pack_price == $price && $pack_duration == $duration ){
+			// Found! Add it to post meta, so we can use it later
+			add_post_meta( $postID, 'cpc_sys_ad_pack', $pack );
+			if( $by == 'name' ) { 
+				return get_the_title( $pack );
+			}
+			return $pack;
+		}
+	}
+	// Nothing matched :(
+	return;
+}
+
+/**
+ * Helper function returns cpc_sys_ad_pack from post meta
+ */
+function cpc_ad_pack_meta_data( $postID ){
+	if( !$postID ){
+		global $post;
+		if( !$post ){ 
+			return; 
+		}
+		$postID = $post->ID;
+	}
+	return get_post_meta( $postID, 'cpc_sys_ad_pack', true );
+}
+
+/**
+ * When an ad_listing is saved, check to see if the ad pack is stored in meta data
+ * If it's not, try to determine the ad pack used from length and cost of ad.
+ * Then make sure the sticky status is correct based on the ad meta data.
+ */
+add_action( 'save_post_ad_listing', 'cpc_save_post_ad_listing' );
+function cpc_save_post_ad_listing( ){
+	global $post;
+	$postID = $post->ID;
+	
+	// Only do this if post_type = ad_listing
+	if( $post->post_type != 'ad_listing' ){
+		return;
+	}
+	// If Ad Pack meta data doesn't exists, try guessing it
+	if( ! cpc_is_ad_pack_meta( $postID ) ) { 
+		cpc_guess_ad_pack( $postID );
+	}
+
+	// Check to make sure the guess worked
+	// If it did, update post stick status based on meta data
+	if( cpc_is_ad_pack_meta( $postID ) ) { 
+		$ad_pack = cpc_ad_pack_used( $postID, 'name' );
+		if( in_array($ad_pack, array('Yearly Upgrade','Monthly Upgrade') ) ){
+			if( !is_sticky( $postID ) ) {
+				stick_post( $postID );
 			}
 		}
-		// Nothing matched :(
-		return false;
+		else{
+			if( is_sticky( $postID ) ){
+				unstick_post( $postID );
+			}
+		}
 	}
+	return;
 }
