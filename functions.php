@@ -458,41 +458,6 @@ function cpc_add_query_vars_filter( $vars ){
 add_filter( 'query_vars', 'cpc_add_query_vars_filter' );
 
 /**
- * Doesn't work - so deprecated I guess
- */
-/*
-function cpc_get_ads() {
-
-  $vars["search-class"] = get_query_var( "search-class" );
-  $vars["widget_number"] = get_query_var( "widget_number" );
-  $vars["cs-all-0"] = get_query_var( "cs-all-0" );
-  $vars["cs-cat--1"] = get_query_var( "cs-cat--1" );
-  $vars["cs-cp_state-2"] = get_query_var( "cs-cp_state-2" );
-  $vars["cs-cp_city-3"] = get_query_var( "cs-cp_city-3" );
-  $vars["cs-cp_price-4"] = get_query_var( "cs-cp_price-4" );
-  $vars["cs-cp_business_name-5"] = get_query_var( "cs-cp_business_name-5" );
- // var_dump( $vars );
-
-	$args = array(
-		'post_type' => APP_POST_TYPE,
-		'post_status' => 'publish',
-		'posts_per_page' => -1,
-		'no_found_rows' => true,
-		'suppress_filters' => false,
-		'ignore_sticky_posts' => true,
-		'orderby' => 'rand',
-	);
-
-	$ads = new WP_Query( $args );
-
-	if ( ! $ads->have_posts() ) {
-		return false;
-	}
-	return cpc_sort_ads_by_membership( $ads );
-}
-*/
-
-/**
  * Return a string with the first letter of each word uppercase
  * and the other letter lowercase
 */
@@ -513,6 +478,7 @@ function cpc_wp_title( $title, $sep ) {
 	return cpc_initial_caps( trim( $title ) );
 }
 add_filter( 'wp_title', 'cpc_wp_title', 10, 2 );
+add_filter( 'title_save_pre', 'cpc_wp_title', 10, 2);
 
 /**
  * Helper function get_the_slug() - self-explanatory
