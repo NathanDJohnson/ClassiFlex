@@ -249,6 +249,18 @@ function cpc_get_ad_packs( $by = 'post_title') {
 }
 
 /**
+ * Prior to getting the posts, apply a filter that orderby meta_key 
+ */
+add_action('pre_get_posts','cpc_search_filter');
+function cpc_search_filter( $query ) {
+	if ( !is_admin() && $query->is_main_query() ) {
+		$query->set('orderby','meta_value_num');
+		$query->set('meta_key','cpc_sys_sort_value'); 
+		$query->set('order','ASC'); 
+	}
+}
+
+/**
  * Function that sorts the ads by membership type (if option set)
  */
 add_action('wp', 'cpc_sort_ads_by_membership');
@@ -646,6 +658,25 @@ function cpc_guess_ad_pack( $postID, $by = 'ID' ){
 		}
 	}
 	// Nothing matched :(
+	// But if the duration is 365 it's yearly
+	// And if it's 30 days it's monthly
+	if( floatval( $price_duration ) == 365 ){
+		$pack = 'Yearly';
+		add_post_meta( $postID, 'cpc_sys_ad_pack', $pack );
+		if( $by == 'name' ) { 
+			return get_the_title( $pack );
+		}
+		return $pack;
+	}
+	elseif( floatval( $price_duration ) == 30 ){
+		$pack = 'Monthly';
+		add_post_meta( $postID, 'cpc_sys_ad_pack', $pack );
+		if( $by == 'name' ) { 
+			return get_the_title( $pack );
+		}
+		return $pack;
+	}
+	// I've got nothing
 	return;
 }
 
@@ -686,14 +717,45 @@ function cpc_save_post_ad_listing( ){
 	// If it did, update post stick status based on meta data
 	if( cpc_is_ad_pack_meta( $postID ) ) { 
 		$ad_pack = cpc_ad_pack_used( $postID, 'name' );
-		if( in_array($ad_pack, array('Yearly Upgrade','Monthly Upgrade') ) ){
-			if( !is_sticky( $postID ) ) {
-				stick_post( $postID );
+	}
+	
+	// Determine the sort value based on membership or ad pack
+	// Check if the meta key 'cpc_sys_sort_value' exists
+	// Either add or update the value
+	
+	$options = get_option('classiflex_theme_options');
+	$membership_pack = cpc_author_membership_pack( $post->post_author );
+	$ad_pack = cpc_ad_pack_used( $postID, 'name' );
+	
+	if( $options['search_by'] ){
+		//$search_by = explode(',', str_replace(", ",",",esc_html($options['search_by'] ) ) );
+		// For now, let's hard code this, will modify later
+		$search_by = array(
+			'Premium Broker',
+			'Featured Broker',
+			'Standard Broker',
+			'Featured Yearly||Featured Monthly',
+			'Yearly||Monthly',
+			'',
+		);
+								
+		foreach( $search_by as $key => $value ){
+			$m = explode( '||', $value );
+			if( ! is_array($m) ){
+				$m = array( $m );
 			}
-		}
-		else{
-			if( is_sticky( $postID ) ){
-				unstick_post( $postID );
+			foreach( $m as $newval ){
+				if( $newval == $membership_pack || $newval == $ad_pack ){
+					if( null == get_post_meta( $postID, 'cpc_sys_sort_value', true ) ) {
+						add_post_meta( $postID, 'cpc_sys_sort_value', $key );
+						continue;
+					}
+					elseif( $oldval != $key ){
+						$oldval = intval( get_post_meta( $postID, 'cpc_sys_sort_value', true ) );
+						update_post_meta( $postID, 'cpc_sys_sort_value', $key, $oldval );
+						continue;
+					}
+				}
 			}
 		}
 	}
