@@ -253,7 +253,7 @@ function cpc_get_ad_packs( $by = 'post_title') {
  */
 add_action('pre_get_posts','cpc_search_filter');
 function cpc_search_filter( $query ) {
-	if ( !is_admin() && $query->is_main_query() ) {
+	if ( !is_page() && !is_admin() && $query->is_main_query() ) {
 		$query->set('orderby','meta_value_num');
 		$query->set('meta_key','cpc_sys_sort_value'); 
 		$query->set('order','ASC'); 
@@ -266,7 +266,7 @@ function cpc_search_filter( $query ) {
 add_action('wp', 'cpc_sort_ads_by_membership');
 function cpc_sort_ads_by_membership( ) {
 	// No need to sort by membership on author page
-	if( is_author() ) { return; }
+	if( is_admin || is_author() || is_page() ) { return; }
 
 	global $wp_query;
 	$ads = $wp_query;
