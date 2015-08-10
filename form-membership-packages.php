@@ -53,10 +53,8 @@
 															$price = '—';
 														}
 														else{
-															if( function_exists( 'money_format' ) ){
-																$d = appthemes_get_price( $price );
-																setlocale(LC_MONETARY, 'en_US.UTF-8');
-																$price = money_format('%.2n', $price);
+															if( cpc_check_php_version() ){
+																$price = appthemes_get_price( $price/12.0 ) . '/Mo.';
 															}
 														}
 													?>

@@ -663,35 +663,46 @@ function cpc_ad_pack_meta_data( $postID ){
 /**
  * When an ad_listing is saved, check to see if the ad pack is stored in meta data
  * If it's not, try to determine the ad pack used from length and cost of ad.
- * Then make sure the sticky status is correct based on the ad meta data.
+ * Finally, write the sort meta data
  */
 add_action( 'save_post_ad_listing', 'cpc_save_post_ad_listing' );
 function cpc_save_post_ad_listing( ){
 	global $post;
-	$postID = $post->ID;
 	
+	// This shouldn't be necessary, but check anyway
 	// Only do this if post_type = ad_listing
 	if( $post->post_type != 'ad_listing' ){
 		return;
 	}
 	// If Ad Pack meta data doesn't exists, try guessing it
-	if( ! cpc_is_ad_pack_meta( $postID ) ) { 
-		cpc_guess_ad_pack( $postID );
+	if( ! cpc_is_ad_pack_meta( $post->ID ) ) { 
+		cpc_guess_ad_pack( $post->ID );
 	}
 
 	// Check to make sure the guess worked
-	// If it did, update post stick status based on meta data
-	if( cpc_is_ad_pack_meta( $postID ) ) { 
-		$ad_pack = cpc_ad_pack_used( $postID, 'name' );
+	if( cpc_is_ad_pack_meta( $post->ID ) ) { 
+		$ad_pack = cpc_ad_pack_used( $post->ID, 'name' );
 	}
 	
 	// Determine the sort value based on membership or ad pack
 	// Check if the meta key 'cpc_sys_sort_value' exists
 	// Either add or update the value
+	return cpc_update_search_meta( $post );
+}
+
+/*
+ * Function that actually writes the search meta data to the database
+ */
+function cpc_update_search_meta( $post ) {
+	
+	// Only do this if post_type = ad_listing
+	if( $post->post_type != 'ad_listing' ){
+		return;
+	}
 	
 	$options = get_option('classiflex_theme_options');
 	$membership_pack = cpc_author_membership_pack( $post->post_author );
-	$ad_pack = cpc_ad_pack_used( $postID, 'name' );
+	$ad_pack = cpc_ad_pack_used( $post->ID, 'name' );
 	
 	if( $options['search_by'] ){
 		//$search_by = explode(',', str_replace(", ",",",esc_html($options['search_by'] ) ) );
@@ -712,8 +723,8 @@ function cpc_save_post_ad_listing( ){
 			}
 			foreach( $m as $newval ){
 				if( $newval == $membership_pack || $newval == $ad_pack ){
-					if( null == get_post_meta( $postID, 'cpc_sys_sort_value', true ) ) {
-						add_post_meta( $postID, 'cpc_sys_sort_value', $key );
+					if( null == get_post_meta( $post->ID, 'cpc_sys_sort_value', true ) ) {
+						add_post_meta( $post->ID, 'cpc_sys_sort_value', $key );
 						continue;
 					}
 					elseif( $oldval != $key ){
@@ -726,4 +737,66 @@ function cpc_save_post_ad_listing( ){
 		}
 	}
 	return;
+}
+
+/**
+ * Update the meta search data after a user has been updated
+ * This fires when a user updates their profile and when an 
+ * admin updates a user's profile. It should update after a
+ * membership pack is purchased.
+ * See: http://forums.appthemes.com/help-using-classipress/hook-membership-change-89067/
+ */
+add_action('personal_options_update', 'update_extra_profile_fields');
+add_action('edit_user_profile_update', 'update_extra_profile_fields');
+function update_extra_profile_fields($user_id) {
+	
+	// Check to see if the users membership pack has changed
+	$membership_pack = cpc_author_membership_pack( $user_id );
+	
+	$listings = cpc_get_user_listings( $user_id );
+	
+	if( $listings && $listings->have_posts() ){
+		foreach( $listings->posts as $post ){
+			cpc_update_search_meta( $post );
+			echo $post->ID;
+		}
+	}
+}
+
+/*
+ * Get the listings for a given user
+ */
+
+function cpc_get_user_listings( $user_id, $args = array() ) {
+	if( !isset( $user_id ) ){
+		return;
+	}
+	$defaults = array(
+		'post_type' => APP_POST_TYPE,
+		'post_status' => 'publish, pending, draft',
+		'author' => $user_id,
+	);
+	$args = wp_parse_args( $args, $defaults );
+	
+	//$args = apply_filters( 'cp_user_dashboard_listings_args', $args );
+	
+	$listings = new WP_Query( $args );
+	
+	if ( ! $listings->have_posts() ) {
+		return false;
+	}
+	
+	return $listings;
+	//return apply_filters( 'cp_user_dashboard_listings', $listings );
+}
+
+function cpc_check_php_version(){
+	if ( defined('PHP_VERSION') ) {
+		$version = explode('.', PHP_VERSION);
+		define('PHP_VERSION_ID', ($version[0] * 10000 + $version[1] * 100 + $version[2]));
+	}
+	if( $version[0] >= 5 || ( $version[0] == 4 && $version[1] >= 3 ) ){
+		return true;
+	}
+	return false;
 }
