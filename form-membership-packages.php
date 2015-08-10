@@ -52,10 +52,8 @@
 														if( 0 == $price ){
 															$price = '—';
 														}
-														else{
-															if( cpc_check_php_version() ){
-																$price = appthemes_get_price( $price/12.0 ) . '/Mo.';
-															}
+														elseif( cpc_check_php_version() ){
+															$price = appthemes_get_price( $price/12.0 ) . '/Mo.';
 														}
 													?>
 													<td class="membership-price <?php if( 0 == $price ){ echo 'membership-zero'; } ?>"><?php echo esc_html( $price ); ?></td>
