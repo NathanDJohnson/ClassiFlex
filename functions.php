@@ -253,7 +253,8 @@ function cpc_get_ad_packs( $by = 'post_title') {
  */
 add_action('pre_get_posts','cpc_search_filter');
 function cpc_search_filter( $query ) {
-	if ( !is_page() && !is_admin() && $query->is_main_query() ) {
+//	if ( !is_page() && !is_admin() && $query->is_main_query() ) {
+	if ( get_query_var( 'search-class' ) && $query->is_main_query() ) {
 		$query->set('orderby','meta_value_num');
 		$query->set('meta_key','cpc_sys_sort_value'); 
 		$query->set('order','ASC'); 
@@ -263,7 +264,7 @@ function cpc_search_filter( $query ) {
 /**
  * Function that sorts the ads by membership type (if option set)
  */
-add_action('wp', 'cpc_sort_ads_by_membership');
+//add_action('wp', 'cpc_sort_ads_by_membership');
 function cpc_sort_ads_by_membership( ) {
 	// No need to sort by membership on author page
 	if( is_admin || is_author() || is_page() ) { return; }
@@ -358,10 +359,10 @@ function cpc_is_featured_description( $userID ){
  */
 function cpc_ad_has_image( $postID ){
 
-	$pack = cpc_ad_pack_used( $postID );
+	$pack = cpc_ad_pack_used( $postID, 'name' );
 	
 	// Hard code this for now, add option later
-	if( in_array( $pack, array( 'Yearly Upgrade' , 'Monthly Upgrade' ) ) ){
+	if( in_array( $pack, array( 'Featured Yearly', 'Yearly Upgrade' , 'Monthly Upgrade' ) ) ){
 		return true;
 	}
 	return false;
@@ -711,8 +712,7 @@ function cpc_update_search_meta( $post ) {
 			'Premium Broker',
 			'Featured Broker',
 			'Standard Broker',
-			'Featured Yearly||Featured Monthly',
-			'Yearly||Monthly',
+			'Yearly Upgrade||Monthly Upgrade||Yearly||Monthly',
 			'',
 		);
 								
