@@ -133,6 +133,11 @@ body.page-id-50 #search-bar {
 	display: none;
 }
 
+/* Button on checkout */
+.page-id-10 button.btn_orange {
+    display: block;
+}
+
 .order-summary .btn_orange {
     clear: both;
     display: block;
