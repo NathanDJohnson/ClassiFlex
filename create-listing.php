@@ -14,6 +14,7 @@
 	}
 </style>
 <?php endif; ?>
+<script type='text/javascript'>jQuery(document).ready(function(){$('.dotted').each(function() {$(this).html('Create Your Listing');});});</script>
 <div class="clr" style="margin-top:10px;"></div>
 <?php
 appthemes_display_checkout();
