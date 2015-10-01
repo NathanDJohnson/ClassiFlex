@@ -475,7 +475,7 @@ function cpc_initial_caps( $string ){
 /**
  * inital caps for <title>
 */
-function cpc_wp_title( $title, $sep ) {
+function cpc_wp_title( $title='', $sep='' ) {
 	return cpc_initial_caps( trim( $title ) );
 }
 add_filter( 'wp_title', 'cpc_wp_title', 10, 2 );
